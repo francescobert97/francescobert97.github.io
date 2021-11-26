@@ -23,11 +23,11 @@ export interface IAnimation {
   styles: [
     `
     .background-animation {
+      position: relative;
       background: url('../../../../assets/template/background-animation.jpg') center no-repeat;
-      transition: 2.5s;
+      transition: 1.7s;
       background-size: cover;
       height: 100vh;
-      position: relative;
       p {
         font-size: 1.2em;
         position: absolute;
@@ -65,7 +65,7 @@ export interface IAnimation {
     }
 
     .end-animation {
-      transform: scale(150)
+      transform: scale(250)
     }
 
 
@@ -153,12 +153,9 @@ export class AnimationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.startAnimation();
+  
   }
 
-  public startAnimation(): void {
-    this.animation.buttonStart;
-  }
 
   public endAnimation(): void {
 
