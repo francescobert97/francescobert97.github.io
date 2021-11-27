@@ -4,9 +4,10 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-home',
   template: `
     
-      <!--<div class="first-animation" *ngIf="stopAnimation">
-        <app-animation (stopAnimation)="hearStopAnimation($event)"></app-animation>
-      </div>-->
+    <div class="first-animation" *ngIf="stopAnimation">
+      <app-animation (stopAnimation)="hearStopAnimation($event)"></app-animation>
+    </div>
+
     <div class="home-container d-flex justify-content-center" [class]="secondAnimation? 'second-animation' : null">
       <div *ngIf="showContent"  class="home-content text-light d-flex flex-column align-items-center">
 
@@ -51,13 +52,13 @@ import { Component, OnInit } from '@angular/core';
 
     @media screen and (max-width: 1200px) {
       .second-animation {
-        background-size: 150%;
+        background-size: 170%;
       }
     }
 
     @media screen and (max-width: 856px) {
       .second-animation {
-        background-size: 180%;
+        background-size: 235%;
       }
 
       .home-content {
@@ -67,7 +68,7 @@ import { Component, OnInit } from '@angular/core';
 
     @media screen and (max-width: 600px) {
       .second-animation {
-        background-size: 265%;
+        background-size: 295%;
       }
 
       .home-content {
@@ -75,7 +76,7 @@ import { Component, OnInit } from '@angular/core';
       }
     }
 
-    @media screen and (max-width: 356px) {
+    @media screen and (max-width: 456px) {
       .second-animation {
         background-size: 425%;
       }
@@ -89,8 +90,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   public stopAnimation:boolean = true;
-  public secondAnimation:boolean = true;
-  public showContent:boolean = true;
+  public secondAnimation:boolean = false;
+  public showContent:boolean = false;
 
   constructor() { }
 

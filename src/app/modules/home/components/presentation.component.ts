@@ -3,35 +3,147 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-presentation',
   template: `
-    <div id="presentation" class="w-100 d-flex justify-content-around">
+    <div  class="presentation my-5">
+      <div class="profile-video">
+        <video src="../../../../assets/template/presentation-video.mp4" autoplay muted loop></video>
+          <div class="profile-picture d-flex justify-content-center align-items-center">
+              <div>
 
-        <div class="profile-picture">
-            FOTO PROFILO
-        </div>
+              </div>
+          </div>
+      
 
-        <div class="biography text-center">
+        <div class="biography">
           <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia vitae, aliquid unde nisi inventore voluptate facilis eveniet placeat! Quasi temporibus obcaecati quam atque sunt distinctio et nihil consectetur exercitationem earum.</p>
         </div>
-
+      </div>
     </div>
   `,
   styles: [
     `
-    #presentation {
-      padding: 3rem;
-      
-     .profile-picture {
-       border: 1px solid black;
-       width: 250px; 
-       height: 150px;
-       border-radius: 20px 100px 20px 150px;
-       box-shadow: 0px 0px 22px 14px #37DBD6;
-     }
+    .presentation {
+      position: relative;
+      overflow: hidden;
+      width: 92%;
+      height: 80%;
+      border-radius: 70px;
+      box-shadow: 0px 0px 22px 4px #37DBD6;
+      margin: 0 3rem;
 
-     .biography {
-      box-shadow: 0px 0px 22px 14px #37DBD6;
-       width: 50%;
-     }
+      .profile-video {
+        width: 100%;
+
+        video{
+          border-radius: 70px;
+          width: 100%;
+          height: 100%;
+          
+        }
+
+        .profile-picture {
+          width: 21rem;
+          height: 21rem;
+          transform: rotate(312deg);
+          box-shadow: 0px 0px 22px 4px #37DBD6;
+          background: url('../../../../assets/template/picture-window2.png') center;
+          background-size: 101%;
+          position: absolute;
+          border: 1px solid black;
+          z-index: 10;
+          top: 12%;
+          left: 0;
+          div:first-child {
+            width: 63%;
+            height: 63%;
+            border-radius: 50px;
+            transform: rotate(317deg);
+            box-shadow: 0px 0px 22px 4px #37DBD6;
+
+            background: black;
+          }
+  
+        }
+
+        .biography {
+          position: absolute;
+          box-shadow: 0px 0px 22px 4px #37DBD6;
+          background: rgba(0, 0, 0, 0.766);
+          width: 40%;
+          padding: 2rem;
+          top: 6%;
+          left: 55%;
+          font-size: 1.2em;
+          border-radius: 20px;
+        }
+
+      }
+
+    }
+
+    @media screen and (max-width: 856px) {
+      .presentation {
+        height: 75%;
+        margin: 0 1.9rem;
+
+        .profile-video {
+
+          .profile-picture {
+            width: 14rem;
+            height: 14rem;
+          }
+
+          .biography {
+            padding: 1.5rem;
+            top: 7%;
+            font-size: 0.9em;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .presentation {
+        height: 65%;
+        margin: 0 1.4rem;
+        .profile-video {
+          .profile-picture {
+            top: 18%;
+            left: -2%;
+            width: 10rem;
+            height: 10rem;
+          }
+
+          .biography {
+            padding: 1.2rem;
+            top: 7%;
+            left: 52%;
+            font-size: 0.6em;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 456px) {
+      .presentation {
+        height: 62%;
+        margin: 0 1.4rem;
+        .profile-video {
+          .profile-picture {
+            top: 18%;
+            left: -1.5%;
+            width: 7rem;
+            height: 7rem;
+          }
+
+          .biography {
+            width: 45%;
+            padding: 1.2rem;
+            top: 7%;
+            left: 47%;
+            font-size: 0.4em;
+          }
+        }
+      }
     }
     `
   ]

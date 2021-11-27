@@ -1,3 +1,4 @@
+import { findLast } from '@angular/compiler/src/directive_resolver';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -10,9 +11,9 @@ import { Component, OnInit } from '@angular/core';
 
       <div class="contain-scale-effect">
 
-        <div *ngFor="let tecnologie of tecnologies; let idx = index" class="single-tecnologie-card" [ngClass]="{'icon-scale-effect' : tecnologie.animation, 'tech-description-visible' : showInfo[idx]}" (click)="showInfo[idx] = !showInfo[idx]">
-            <img src="{{tecnologie.icon}}" alt="">
-            <div class="tecnologie-info" *ngIf="showInfo[idx]">
+        <div *ngFor="let tecnologie of tecnologies; let idx = index" class="single-tecnologie-card" [ngClass]="{'icon-scale-effect' : tecnologie.animation, 'tech-description-visible' : tecnologies[idx].showDescription}" (click)="info(idx)">
+            <img src="{{tecnologie.icon}}" alt="una delle tecnologie che utilizzo.">
+            <div class="tecnologie-info" *ngIf="tecnologies[idx].showDescription">
               <h2>{{tecnologie.name}}</h2>
               <p>{{tecnologie.description}}</p>
             </div>
@@ -39,12 +40,12 @@ import { Component, OnInit } from '@angular/core';
         position: absolute;
         top: 2%;
         left: -14%;
-        width: 30rem;
+        width: 33rem;
         height: 20rem;
         transition: 22s;
      
         div:nth-child(1) {
-          top: 95%;
+          top: 85%;
           left: 30%;
         }
 
@@ -104,22 +105,57 @@ import { Component, OnInit } from '@angular/core';
       z-index: 10000;
     }
 
-    @media screen and (max-width: 1200px) {
-      .contain-scale-effect {
-        width: 30rem;
-        height: 20rem;
-      }
-    }
 
     @media screen and (max-width: 856px) {
-      .contain-scale-effect {
-        width: 30rem;
-        height: 20rem;
+      .container-stack {
+        h2 {
+          font-size: 1.9em;
+        }
+        .contain-scale-effect {
+      
+          .single-tecnologie-card {
+            img {
+              width: 8.2rem;
+              height: 8.2rem;
+            }
+
+            .tecnologie-info {
+              width: 6rem;
+              font-size: 0.5em;
+              top: 50%;
+              left: 0;
+            }
+          }
+        }
       }
     }
 
     @media screen and (max-width: 600px) {
- 
+      .container-stack {
+        h2 {
+          font-size: 1.5em;
+        }
+        .contain-scale-effect {
+          width: 24rem;
+          height: 16rem;
+          top: 20%;
+          left: -3%;
+
+          .single-tecnologie-card {
+            img {
+              width: 5.5rem;
+              height: 5.5rem;
+            }
+
+            .tecnologie-info {
+              width: 6rem;
+              font-size: 0.5em;
+              top: 50%;
+              left: 0;
+            }
+          }
+        }
+      }
     }
 
     @media screen and (max-width: 356px) {
@@ -160,7 +196,8 @@ export class TechStackComponent implements OnInit {
       icon: '../../../../assets/icons/angular-icon.svg',
       description: ' è un framework open source per lo sviluppo di applicazioni web', 
       animation: false,
-      time: 500
+      time: 500,
+      showDescription: false
     },
     {
       id: 1,
@@ -168,7 +205,8 @@ export class TechStackComponent implements OnInit {
       icon: '../../../../assets/icons/rxjs-icon.png',
       description: ' è un framework open source per lo sviluppo di applicazioni web',
       animation: false,
-      time: 1000
+      time: 1000,
+      showDescription: false
     },
     {
       id: 2,
@@ -176,7 +214,8 @@ export class TechStackComponent implements OnInit {
       icon: '../../../../assets/icons/typescript-icon.png',
       description: ' è un framework open source per lo sviluppo di applicazioni web',
       animation: false,
-      time: 1500
+      time: 1500,
+      showDescription: false
     },
     {
       id: 3,
@@ -184,7 +223,8 @@ export class TechStackComponent implements OnInit {
       icon: '../../../../assets/icons/javascript-icon.png',
       description: ' è un framework open source per lo sviluppo di applicazioni web',
       animation: false,
-      time: 2000
+      time: 2000,
+      showDescription: false
     },
     {
       id: 4,
@@ -192,7 +232,8 @@ export class TechStackComponent implements OnInit {
       icon: '../../../../assets/icons/css-icon.png',
       description: ' è un framework open source per lo sviluppo di applicazioni web',
       animation: false,
-      time: 2500
+      time: 2500,
+      showDescription: false
     },
     {
       id: 5,
@@ -200,11 +241,14 @@ export class TechStackComponent implements OnInit {
       icon: '../../../../assets/icons/html-icon.png',
       description: ' è un framework open source per lo sviluppo di applicazioni web',
       animation: false,
-      time: 3000
+      time: 3000,
+      showDescription: false
     },
   ]
   public readonly showInfo: {[key: number]: boolean} = {};
+  
 
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -227,5 +271,26 @@ export class TechStackComponent implements OnInit {
     }
   }
 
+  info(idx:number) {
+
+    this.tecnologies[idx].showDescription = !this.tecnologies[idx].showDescription;
+ 
+      this.tecnologies.forEach((element, index) => {
+
+        if(this.tecnologies[idx] !== this.tecnologies[index]) {
+          this.tecnologies[index].showDescription = false;
+          
+        } else {
+          const descr = this.tecnologies[idx].showDescription;
+          if(this.tecnologies[idx].showDescription  === descr) {
+            this.tecnologies[index].showDescription = false;
+          }
+          this.tecnologies[index].showDescription = true;
+        
+        }
+        
+      }) 
+
+  }
 
 }
