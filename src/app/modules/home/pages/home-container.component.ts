@@ -4,11 +4,17 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-home',
   template: `
     
-    <div class="first-animation" *ngIf="stopAnimation">
+    <!--<div class="first-animation" *ngIf="stopAnimation">
       <app-animation (stopAnimation)="hearStopAnimation($event)"></app-animation>
-    </div>
+    </div>-->
+ 
 
-    <div class="home-container d-flex justify-content-center" [class]="secondAnimation? 'second-animation' : null">
+    <div class="home-container d-flex justify-content-start" [class]="secondAnimation? 'second-animation' : null">
+
+      <div class="mt-5 p-3">
+        <app-social-bar (toggle)="hearShowSocialBar($event)" [opened]="openedBar"></app-social-bar>
+      </div>
+
       <div *ngIf="showContent"  class="home-content text-light d-flex flex-column align-items-center">
 
           <div class="w-100">
@@ -90,8 +96,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   public stopAnimation:boolean = true;
-  public secondAnimation:boolean = false;
-  public showContent:boolean = false;
+  public secondAnimation:boolean = true;
+  public showContent:boolean = true;
+  public openedBar: boolean = false;
 
   constructor() { }
 
@@ -108,4 +115,8 @@ export class HomeComponent implements OnInit {
     setTimeout(() => this.showContent = true, 700);
   }
 
+  public hearShowSocialBar(event:any) {
+    this.openedBar = !this.openedBar;
+    console.log(this.openedBar)
+  }
 }

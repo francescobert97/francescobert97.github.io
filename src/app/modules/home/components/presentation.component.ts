@@ -8,13 +8,17 @@ import { Component, OnInit } from '@angular/core';
         <video src="../../../../assets/template/presentation-video.mp4" autoplay muted loop></video>
           <div class="profile-picture d-flex justify-content-center align-items-center">
               <div>
-
+                <img src="../../../../assets/template/profile-picture2.png" alt="">
               </div>
           </div>
       
 
         <div class="biography">
-          <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia vitae, aliquid unde nisi inventore voluptate facilis eveniet placeat! Quasi temporibus obcaecati quam atque sunt distinctio et nihil consectetur exercitationem earum.</p>
+          <p class="">
+            Sono Francesco e sono uno sviluppatore web Front-end, la tecnologia mi ha sempre appassionato,
+            mi affascina molto di questo mondo la possibilità di rendere ogni cosa realtà, è un po' come ricevere dei superpoteri,
+            ho quindi iniziato a formarmi come web developer prima in autonomia e poi seguendo un corso,
+            punto a diventare uno sviluppatore completo un giorno.</p>
         </div>
       </div>
     </div>
@@ -53,13 +57,18 @@ import { Component, OnInit } from '@angular/core';
           top: 12%;
           left: 0;
           div:first-child {
+            overflow: hidden;
             width: 63%;
             height: 63%;
             border-radius: 50px;
-            transform: rotate(317deg);
+            transform: rotate(47deg);
             box-shadow: 0px 0px 22px 4px #37DBD6;
-
             background: black;
+            img {
+              
+              width: 100%;
+              height: 180%;
+            }
           }
   
         }

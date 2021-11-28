@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home-container.component';
 import { AnimationComponent } from './components/animation.component';
 import { PresentationComponent } from './components/presentation.component';
 import { TechStackComponent } from './components/tech-stack.component';
+import { SocialBarComponent } from './components/social-bar.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { TechStackComponent } from './components/tech-stack.component';
     HomeComponent,
     AnimationComponent,
     PresentationComponent,
-    TechStackComponent
+    TechStackComponent,
+    SocialBarComponent
   ],
   imports: [
     CommonModule,
