@@ -145,8 +145,9 @@ import { Component, OnInit } from '@angular/core';
           }
 
           .biography {
+            margin-top: 0.4rem;
             width: 45%;
-            padding: 1.2rem;
+            padding: 0.8rem;
             top: 7%;
             left: 47%;
             font-size: 0.4em;

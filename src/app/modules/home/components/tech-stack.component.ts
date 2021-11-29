@@ -37,6 +37,7 @@ import { Component, OnInit } from '@angular/core';
       }
 
       .contain-scale-effect {
+       
         position: absolute;
         top: 2%;
         left: -14%;
@@ -136,15 +137,15 @@ import { Component, OnInit } from '@angular/core';
           font-size: 1.5em;
         }
         .contain-scale-effect {
-          width: 24rem;
-          height: 16rem;
+          width: 19rem;
+          height: 14rem;
           top: 20%;
-          left: -3%;
+          left: 5%;
 
           .single-tecnologie-card {
             img {
-              width: 5.5rem;
-              height: 5.5rem;
+              width: 4.5rem;
+              height: 4.5rem;
             }
 
             .tecnologie-info {

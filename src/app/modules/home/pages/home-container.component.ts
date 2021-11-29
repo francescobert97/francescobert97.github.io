@@ -4,9 +4,9 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-home',
   template: `
     
-    <!--<div class="first-animation" *ngIf="stopAnimation">
+    <div class="first-animation" *ngIf="stopAnimation">
       <app-animation (stopAnimation)="hearStopAnimation($event)"></app-animation>
-    </div>-->
+    </div>
  
 
     <div class="home-container d-flex justify-content-start" [class]="secondAnimation? 'second-animation' : null">
@@ -96,8 +96,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   public stopAnimation:boolean = true;
-  public secondAnimation:boolean = true;
-  public showContent:boolean = true;
+  public secondAnimation:boolean = false;
+  public showContent:boolean = false;
   public openedBar: boolean = false;
 
   constructor() { }

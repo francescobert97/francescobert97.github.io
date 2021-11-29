@@ -114,19 +114,20 @@ export interface IAnimation {
         }
 
         button {
-          left: 31.7%;
+          left: 20.7%;
+          padding: 0.5rem 2rem;
         }
       }
 
     }
 
-    @media screen and (max-width: 356px) {
+    @media screen and (max-width: 456px) {
       .background-animation {
 
         background-size: 350% contain;
 
         p{
-          font-size: 1em;
+          font-size: 1.2em;
           left: 35%;
         }
 
