@@ -1,30 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { CONTENT } from 'src/app/shared/mock-content';
+import { IContent } from 'src/app/shared/models/home.model';
 
 @Component({
   selector: 'app-home',
   template: `
-    
-    <div class="first-animation" *ngIf="stopAnimation">
-      <app-animation (stopAnimation)="hearStopAnimation($event)"></app-animation>
-    </div>
- 
-
     <div class="home-container d-flex justify-content-start" [class]="secondAnimation? 'second-animation' : null">
 
       <div class="mt-5 p-3">
         <app-social-bar (toggle)="hearShowSocialBar($event)" [opened]="openedBar"></app-social-bar>
       </div>
 
-      <div *ngIf="showContent"  class="home-content text-light d-flex flex-column align-items-center">
+      <div  class="home-content text-light d-flex flex-column align-items-center">
 
           <div class="w-100">
-            <app-presentation></app-presentation>
+            <app-presentation [presentationContent]="content.home.presentation"></app-presentation>
           </div>
 
           <div class="stack">
-            <app-tech-stack></app-tech-stack>
+            <app-tech-stack [tecnologiesContent]="content.home.tecnology"></app-tech-stack>
           </div>
-
+          
+          <div class="w-100">
+            <app-project-list [projectListContent]="content.home.project"></app-project-list>
+          </div>
       </div>
     </div>
   `,
@@ -33,6 +32,7 @@ import { Component, OnInit } from '@angular/core';
     .home-container {
       background: url('../../../../assets/template/background.jpg') center;
       background-size: 10500%;
+      width: 100%;
       height: 100vh;
       transition: 0.4s;
       position: relative;
@@ -49,9 +49,6 @@ import { Component, OnInit } from '@angular/core';
       overflow-y: scroll;
     }
 
-    .stack {
-  
-    }
     .second-animation {
       background-size: 110%;
     }
@@ -95,28 +92,24 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class HomeComponent implements OnInit {
+  public content:IContent = CONTENT[0];
   public stopAnimation:boolean = true;
   public secondAnimation:boolean = false;
-  public showContent:boolean = false;
   public openedBar: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.hearStopAnimation();
   }
 
-  public hearStopAnimation(event:any) {
+  private hearStopAnimation() {
     this.stopAnimation = false;
 
-    setTimeout(() => {
-      this.secondAnimation = true;
-    }, 100);
-
-    setTimeout(() => this.showContent = true, 700);
+    setTimeout(() => this.secondAnimation = true, 100);
   }
 
   public hearShowSocialBar(event:any) {
     this.openedBar = !this.openedBar;
-    console.log(this.openedBar)
   }
 }

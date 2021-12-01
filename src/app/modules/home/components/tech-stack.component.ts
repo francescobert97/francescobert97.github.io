@@ -1,5 +1,5 @@
-import { findLast } from '@angular/compiler/src/directive_resolver';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ITecnology } from 'src/app/shared/models/home.model';
 
 
 @Component({
@@ -11,9 +11,9 @@ import { Component, OnInit } from '@angular/core';
 
       <div class="contain-scale-effect">
 
-        <div *ngFor="let tecnologie of tecnologies; let idx = index" class="single-tecnologie-card" [ngClass]="{'icon-scale-effect' : tecnologie.animation, 'tech-description-visible' : tecnologies[idx].showDescription}" (click)="info(idx)">
+        <div *ngFor="let tecnologie of tecnologiesContent; let idx = index" class="single-tecnologie-card" [ngClass]="{'icon-scale-effect' : tecnologie.animation, 'tech-description-visible' : tecnologiesContent[idx].showDescription}" (click)="info(idx)">
             <img src="{{tecnologie.icon}}" alt="una delle tecnologie che utilizzo.">
-            <div class="tecnologie-info" *ngIf="tecnologies[idx].showDescription">
+            <div class="tecnologie-info" *ngIf="tecnologiesContent[idx].showDescription">
               <h2>{{tecnologie.name}}</h2>
               <p>{{tecnologie.description}}</p>
             </div>
@@ -190,62 +190,8 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class TechStackComponent implements OnInit {
-  tecnologies:any[] = [
-    {
-      id: 0,
-      name: 'Angular',
-      icon: '../../../../assets/icons/angular-icon.svg',
-      description: ' è un framework open source per lo sviluppo di applicazioni web', 
-      animation: false,
-      time: 500,
-      showDescription: false
-    },
-    {
-      id: 1,
-      name: 'Rxjs',
-      icon: '../../../../assets/icons/rxjs-icon.png',
-      description: ' è un framework open source per lo sviluppo di applicazioni web',
-      animation: false,
-      time: 1000,
-      showDescription: false
-    },
-    {
-      id: 2,
-      name: 'Typescript',
-      icon: '../../../../assets/icons/typescript-icon.png',
-      description: ' è un framework open source per lo sviluppo di applicazioni web',
-      animation: false,
-      time: 1500,
-      showDescription: false
-    },
-    {
-      id: 3,
-      name: 'Javascript',
-      icon: '../../../../assets/icons/javascript-icon.png',
-      description: ' è un framework open source per lo sviluppo di applicazioni web',
-      animation: false,
-      time: 2000,
-      showDescription: false
-    },
-    {
-      id: 4,
-      name: 'CSS3',
-      icon: '../../../../assets/icons/css-icon.png',
-      description: ' è un framework open source per lo sviluppo di applicazioni web',
-      animation: false,
-      time: 2500,
-      showDescription: false
-    },
-    {
-      id: 5,
-      name: 'HTML5',
-      icon: '../../../../assets/icons/html-icon.png',
-      description: ' è un framework open source per lo sviluppo di applicazioni web',
-      animation: false,
-      time: 3000,
-      showDescription: false
-    },
-  ]
+  @Input() public tecnologiesContent:ITecnology[] = [];
+
   public readonly showInfo: {[key: number]: boolean} = {};
   
 
@@ -257,16 +203,16 @@ export class TechStackComponent implements OnInit {
   }
 
   private intervalFn(tecnologie:any, time:number) {
-    const found = this.tecnologies.find(tcnlg =>  tcnlg.id === tecnologie.id);
-    const foundIdx = this.tecnologies.findIndex(tcnlg =>  tcnlg.id === tecnologie.id);
+    const found = this.tecnologiesContent.find(tcnlg =>  tcnlg.id === tecnologie.id);
+    const foundIdx = this.tecnologiesContent.findIndex(tcnlg =>  tcnlg.id === tecnologie.id);
 
     setInterval(() => {
-      this.tecnologies[foundIdx].animation = !this.tecnologies[foundIdx].animation
+      this.tecnologiesContent[foundIdx].animation = !this.tecnologiesContent[foundIdx].animation;
     }, time);
   }
 
   getScaleAnimation() {
-    for(let tecnologie of this.tecnologies) {
+    for(let tecnologie of this.tecnologiesContent) {
 
        this.intervalFn(tecnologie, tecnologie.time);
     }
@@ -274,19 +220,19 @@ export class TechStackComponent implements OnInit {
 
   info(idx:number) {
 
-    this.tecnologies[idx].showDescription = !this.tecnologies[idx].showDescription;
+    this.tecnologiesContent[idx].showDescription = !this.tecnologiesContent[idx].showDescription;
  
-      this.tecnologies.forEach((element, index) => {
+      this.tecnologiesContent.forEach((element, index) => {
 
-        if(this.tecnologies[idx] !== this.tecnologies[index]) {
-          this.tecnologies[index].showDescription = false;
+        if(this.tecnologiesContent[idx] !== this.tecnologiesContent[index]) {
+          this.tecnologiesContent[index].showDescription = false;
           
         } else {
-          const descr = this.tecnologies[idx].showDescription;
-          if(this.tecnologies[idx].showDescription  === descr) {
-            this.tecnologies[index].showDescription = false;
+          const descr = this.tecnologiesContent[idx].showDescription;
+          if(this.tecnologiesContent[idx].showDescription  === descr) {
+            this.tecnologiesContent[index].showDescription = false;
           }
-          this.tecnologies[index].showDescription = true;
+          this.tecnologiesContent[index].showDescription = true;
         
         }
         

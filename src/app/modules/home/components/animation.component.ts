@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 export interface IAnimation {
   sizeName: boolean,
@@ -140,8 +141,6 @@ export interface IAnimation {
   ]
 })
 export class AnimationComponent implements OnInit { 
-  @Output() stopAnimation = new EventEmitter();
-
   animation:IAnimation = {
     sizeName: false,
     hideName: true,
@@ -151,7 +150,7 @@ export class AnimationComponent implements OnInit {
     closeAnimation:false
   }
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   
@@ -172,10 +171,12 @@ export class AnimationComponent implements OnInit {
   
     }
 
-    setTimeout(()=> this.animation.closeAnimation = true, 2000);
+    setTimeout(() =>{
+      this.animation.closeAnimation = true
+  
+    }, 2000);
 
-    setTimeout(() => this.stopAnimation.emit(), 2900);
-    
+    setTimeout(() =>  this.router.navigateByUrl('/home'), 2300);
   }
 
 }

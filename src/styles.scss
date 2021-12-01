@@ -1,6 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 body {
     background: black;
+    background: url('./assets/template/background.jpg') center;
     overflow-y: hidden;
     overflow-x: hidden;
+    background-size: 110%;
+
+    @media screen and (max-width: 1200px) {
+          background-size: 170%;
+      }
+  
+      @media screen and (max-width: 856px) {
+          background-size: 235%;
+      }
+  
+      @media screen and (max-width: 600px) {
+          background-size: 295%;
+      }
+  
+      @media screen and (max-width: 456px) {
+          background-size: 425%;
+      }
 }

@@ -1,24 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IPresentation } from 'src/app/shared/models/home.model';
 
 @Component({
   selector: 'app-presentation',
   template: `
     <div  class="presentation my-5">
       <div class="profile-video">
-        <video src="../../../../assets/template/presentation-video.mp4" autoplay muted loop></video>
+        <video src="{{presentationContent.video}}" autoplay muted loop></video>
           <div class="profile-picture d-flex justify-content-center align-items-center">
               <div>
-                <img src="../../../../assets/template/profile-picture2.png" alt="">
+                <img src="{{presentationContent.profilePicture}}" alt="">
               </div>
           </div>
       
 
         <div class="biography">
-          <p class="">
-            Sono Francesco e sono uno sviluppatore web Front-end, la tecnologia mi ha sempre appassionato,
-            mi affascina molto di questo mondo la possibilità di rendere ogni cosa realtà, è un po' come ricevere dei superpoteri,
-            ho quindi iniziato a formarmi come web developer prima in autonomia e poi seguendo un corso,
-            punto a diventare uno sviluppatore completo un giorno.</p>
+          <p class="">{{presentationContent.biography}}</p>
         </div>
       </div>
     </div>
@@ -159,6 +156,7 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class PresentationComponent implements OnInit {
+  @Input() public presentationContent!:IPresentation; 
 
   constructor() { }
 
