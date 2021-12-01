@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-project-search-bar',
   template: `
-   <input [formControl]="searchInput" name="search" type="search">
+   <input (change)="emitResult()" [formControl]="searchInput" name="search" type="search">
   `,
   styles: [
   ]
 })
 export class ProjectSearchBarComponent implements OnInit {
+  @Output() public resultEmitter = new EventEmitter<string>();
+  public searchResult:string = '';
 
   constructor() { }
 
@@ -21,9 +23,13 @@ export class ProjectSearchBarComponent implements OnInit {
       debounceTime(800),
       distinctUntilChanged()
     )
-    .subscribe(text => console.log(text))
+    .subscribe(text => this.searchResult = text);
   }
 
-  searchInput = new FormControl('')
+  searchInput = new FormControl('');
+  
+  public emitResult() {
+    this.resultEmitter.emit(this.searchResult);
+  }
 
 }

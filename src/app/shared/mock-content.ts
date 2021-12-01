@@ -75,8 +75,11 @@ export const CONTENT:IContent[] = [
                     {
                         id: 0,
                         name: 'f-stream',
-                        imgCover: '',
-                        projectImg: [],
+                        imgCover: '../../assets/projects/f-stream/f-stream-home.png',
+                        projectImg: [
+                            '../../assets/projects/f-stream/f-stream-landing.png',
+                            '../../assets/projects/f-stream/f-stream-animation.png'
+                        ],
                         description: 'Sito di streaming di fantasia, contenente semplice autenticazione, guardie per le rotte accessibili solo da loggati.'
                     }
                 ]
