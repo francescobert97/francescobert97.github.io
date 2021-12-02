@@ -81,6 +81,13 @@ export const CONTENT:IContent[] = [
                             '../../assets/projects/f-stream/f-stream-animation.png'
                         ],
                         description: 'Sito di streaming di fantasia, contenente semplice autenticazione, guardie per le rotte accessibili solo da loggati.'
+                    },
+                    {
+                        id: 1,
+                        name: 'MyPortfolio',
+                        imgCover: '../../assets/projects/myportfolio/myportfolio-home.png',
+                        projectImg: [],
+                        description: 'Lo stai già vedendo, ma è pur sempre un mio progetto no?'
                     }
                 ]
         }

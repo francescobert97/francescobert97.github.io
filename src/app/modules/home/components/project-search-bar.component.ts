@@ -5,9 +5,19 @@ import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 @Component({
   selector: 'app-project-search-bar',
   template: `
-   <input (change)="emitResult()" [formControl]="searchInput" name="search" type="search">
+   <input class="search-bar text-light" (change)="emitResult()" [formControl]="searchInput" name="search" type="search">
   `,
   styles: [
+    `
+    .search-bar {
+      box-shadow: 0px 0px 22px -2px #37dbd6;
+      border-radius: 10px;
+      background: black;
+      border: none;
+      outline: none;
+      padding: 0.5rem;
+    }
+    `
   ]
 })
 export class ProjectSearchBarComponent implements OnInit {
