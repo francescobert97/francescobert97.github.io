@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 
 export interface IAnimation {
@@ -150,10 +150,9 @@ export class AnimationComponent implements OnInit {
     closeAnimation:false
   }
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private changeDetection:ChangeDetectorRef) { }
 
   ngOnInit(): void {
-  
   }
 
 
@@ -175,6 +174,7 @@ export class AnimationComponent implements OnInit {
       this.animation.closeAnimation = true
   
     }, 2000);
+   
 
     setTimeout(() =>  this.router.navigateByUrl('/home'), 2300);
   }

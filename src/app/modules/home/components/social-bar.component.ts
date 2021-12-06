@@ -57,7 +57,7 @@ export interface ISocial {
     @media screen and (max-width: 856px) {
       .social-bar {
         position: absolute;
-        top: 0;
+        top: 1%;
         left: 1%;
         z-index: 1000;
         width: 8rem;
@@ -107,7 +107,7 @@ export interface ISocial {
     @media screen and (max-width: 456px) {
       .social-bar {
         position: absolute;
-        top: 0;
+        top: 1%;
         left: 1%;
         z-index: 1000;
         width: 5rem;

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { IProject } from 'src/app/shared/models/home.model';
 import { HomeService } from '../services/home.service';
 
@@ -13,25 +14,29 @@ import { HomeService } from '../services/home.service';
         ></app-project-search-bar>
       </div>
 
-      <div class="d-flex">
-        <ng-container *ngFor="let project of projectListContent">
-          <div
-            *ngIf="searchResults.length <= 0; else projectResult"
-            (click)="showfullProject(project.id, project)"
-            class="project-card d-flex flex-column align-items-center justify-content-around"
-          >
-            <img src="{{ project.imgCover }}" alt="immagine del progetto" />
-
+      <div>
+        <div
+          class="d-flex"
+          *ngIf="searchResults.length <= 0; else projectResult"
+        >
+          <ng-container *ngFor="let project of projectListContent">
             <div
-              class="project-card-label d-flex flex-column justify-content-around align-items-center"
+              (click)="showfullProject(project.id, project)"
+              class="project-card d-flex flex-column align-items-center justify-content-around"
             >
-              <h4>{{ project.name | uppercase }}</h4>
-              <p class="text-center m-5">{{ project.description }}</p>
+              <img src="{{ project.imgCover }}" alt="immagine del progetto" />
 
-              <p>clicca per maggiori dettagli.</p>
+              <div
+                class="project-card-label d-flex flex-column justify-content-around align-items-center"
+              >
+                <h4>{{ project.name | uppercase }}</h4>
+                <p class="text-center">{{ project.description }}</p>
+
+                <p class="text-center">clicca per maggiori dettagli.</p>
+              </div>
             </div>
-          </div>
-        </ng-container>
+          </ng-container>
+        </div>
       </div>
 
       <ng-template #projectResult>
@@ -40,9 +45,11 @@ import { HomeService } from '../services/home.service';
           (click)="showfullProject(result.id, result)"
           class="project-card d-flex flex-column align-items-center justify-content-around"
         >
-        <img src="{{ result.imgCover }}" alt="immagine del progetto" />
-          
-          <div class="project-card-label d-flex flex-column justify-content-around align-items-center">
+          <img src="{{ result.imgCover }}" alt="immagine del progetto" />
+
+          <div
+            class="project-card-label d-flex flex-column justify-content-around align-items-center"
+          >
             <h4>{{ result.name | uppercase }}</h4>
             <p>{{ result.description }}</p>
 
@@ -68,14 +75,18 @@ import { HomeService } from '../services/home.service';
           position: relative;
           background: rgba(0, 0, 0, 0.477);
           width: 20rem;
-          height: 20rem;
+          height: 18.5rem;
           box-shadow: 0px 0px 22px -2px #37dbd6;
           border-radius: 20px;
           transform: rotate3d(1, -10, 1, 30deg);
           transition: 2s;
+          overflow:hidden;
+
           img {
-            width: 100%;
-            height: 100%;
+            margin-left: 150px;
+            width: 190%;
+            height: 120%;
+        
             border-radius: 20px;
           }
 
@@ -85,6 +96,7 @@ import { HomeService } from '../services/home.service';
           }
 
           p {
+            margin: 1.9rem 0;
             max-height: 5rem;
             overflow: hidden;
             font-size: 1.2em;
@@ -100,6 +112,64 @@ import { HomeService } from '../services/home.service';
           }
         }
       }
+
+    @media screen and (max-width: 1200px) {
+   
+    }
+
+    @media screen and (max-width: 856px) {
+      .project-list {
+        margin: 7.5rem 0.7rem;
+        .project-card {
+          width: 15.5rem;
+          height: 15.5rem;
+          h4{
+            font-size: 1.4em;
+          }
+          p{
+            margin: 0.6rem 0;
+            max-height: 3.5rem;
+            font-size: 0.7em;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .project-list {
+        margin: 4rem 0.7rem;
+        .project-card {
+          width: 12.5rem;
+          height: 12.5rem;
+          h4{
+            font-size: 1.4em;
+          }
+          p{
+            margin: 0.6rem 0;
+            max-height: 3.5rem;
+            font-size: 0.7em;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 456px) {
+      .project-list {
+        margin: 1.5rem 0.7rem;
+        .project-card {
+          width: 10rem;
+          height: 10rem;
+          h4{
+            font-size: 1.2em;
+          }
+          p{
+            margin: 0.3rem 0;
+            max-height: 3.5rem;
+            font-size: 0.5em;
+          }
+        }
+      }
+    }
     `,
   ],
 })
@@ -111,27 +181,38 @@ export class ProjectListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public showfullProject(id: number, project:IProject) {
+  public showfullProject(id: number, project: IProject) {
     this.sendDataProject(project);
 
     this.router.navigateByUrl(`/home/result/:${id}`);
   }
 
-  public hearSearchResult(event: string) {
-    console.log(event);
-    this.getResultSearch(event);
+  public hearSearchResult(event: Observable<string>) {
+    event.subscribe((search) => this.getResultSearch(search));
   }
 
   private sendDataProject(project: IProject) {
     this.homeService.saveProject(project);
-  }
 
+    this.saveDataOnLocalStorage(project);
+  }
+  private saveDataOnLocalStorage(project: IProject) {
+    localStorage.setItem('projectData', JSON.stringify(project));
+  }
   private getResultSearch(searchText: string) {
     const found = this.projectListContent.find(
       (project) => project.name === searchText
     );
-    if (found) {
+
+    if (
+      found &&
+      !this.searchResults.some((project) => project.name === found.name)
+    ) {
       this.searchResults.push(found as IProject);
+      console.log('push');
+    }
+    if (!found || searchText.length < 3 || this.searchResults.length > 1) {
+      this.searchResults = [];
     }
   }
 }

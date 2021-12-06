@@ -1,11 +1,12 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-project-search-bar',
   template: `
-   <input class="search-bar text-light" (change)="emitResult()" [formControl]="searchInput" name="search" type="search">
+   <input class="search-bar " (keypress)="sendSearchAtParent($event)" [formControl]="searchInput" name="search" type="search" placeholder="cerca tra i progetti">
   `,
   styles: [
     `
@@ -21,25 +22,35 @@ import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
   ]
 })
 export class ProjectSearchBarComponent implements OnInit {
-  @Output() public resultEmitter = new EventEmitter<string>();
+  @Output() public resultEmitter = new EventEmitter<any>();
   public searchResult:string = '';
 
   constructor() { }
 
   ngOnInit(): void {
-    this.searchInput.valueChanges
-    .pipe(
-      filter(text => text.length >= 3),
-      debounceTime(800),
-      distinctUntilChanged()
-    )
-    .subscribe(text => this.searchResult = text);
+
   }
 
   searchInput = new FormControl('');
   
-  public emitResult() {
-    this.resultEmitter.emit(this.searchResult);
+  private getSearchData():Observable<string> {
+   return this.searchInput.valueChanges
+    .pipe(
+      map(text => text.toLowerCase()),
+      filter(text => text.length >= 3),
+      debounceTime(400),
+      distinctUntilChanged()
+    )
+
+  }
+  private emitResult(obs:Observable<string>): void {
+    
+    this.resultEmitter.emit(obs);
+
   }
 
+  public sendSearchAtParent(event:Event) {
+
+      this.emitResult(this.getSearchData())
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CONTENT } from 'src/app/shared/mock-content';
 import { IContent } from 'src/app/shared/models/home.model';
 
@@ -101,6 +101,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.hearStopAnimation();
+    localStorage.clear()
   }
 
   private hearStopAnimation() {

@@ -84,7 +84,7 @@ export const CONTENT:IContent[] = [
                     },
                     {
                         id: 1,
-                        name: 'MyPortfolio',
+                        name: 'myportfolio',
                         imgCover: '../../assets/projects/myportfolio/myportfolio-home.png',
                         projectImg: [],
                         description: 'Lo stai già vedendo, ma è pur sempre un mio progetto no?'

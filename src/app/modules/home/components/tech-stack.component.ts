@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, Input, NgZone, OnInit } from '@angular/core';
 import { ITecnology } from 'src/app/shared/models/home.model';
 
 
@@ -159,7 +159,7 @@ import { ITecnology } from 'src/app/shared/models/home.model';
       }
     }
 
-    @media screen and (max-width: 356px) {
+    @media screen and (max-width: 456px) {
       .container-stack {
         h2 {
           font-size: 0.9em;
@@ -205,16 +205,16 @@ export class TechStackComponent implements OnInit {
   private intervalFn(tecnologie:any, time:number) {
     const found = this.tecnologiesContent.find(tcnlg =>  tcnlg.id === tecnologie.id);
     const foundIdx = this.tecnologiesContent.findIndex(tcnlg =>  tcnlg.id === tecnologie.id);
-
-    setInterval(() => {
+ 
+   setInterval(() => {
       this.tecnologiesContent[foundIdx].animation = !this.tecnologiesContent[foundIdx].animation;
     }, time);
+  
   }
 
   getScaleAnimation() {
     for(let tecnologie of this.tecnologiesContent) {
-
-       this.intervalFn(tecnologie, tecnologie.time);
+        this.intervalFn(tecnologie, tecnologie.time);
     }
   }
 
@@ -239,5 +239,7 @@ export class TechStackComponent implements OnInit {
       }) 
 
   }
+
+
 
 }
