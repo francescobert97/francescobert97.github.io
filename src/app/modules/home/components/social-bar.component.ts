@@ -1,6 +1,4 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { NgModel } from '@angular/forms';
-
 export interface ISocial {
   icon: string,
   name: string,
@@ -110,7 +108,7 @@ export interface ISocial {
         top: 1%;
         left: 1%;
         z-index: 1000;
-        width: 5rem;
+        
         padding: 1.2rem;
         .open-button {
           margin-left: 0.5rem;

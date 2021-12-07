@@ -11,7 +11,7 @@ import { IContent } from 'src/app/shared/models/home.model';
         <app-social-bar (toggle)="hearShowSocialBar($event)" [opened]="openedBar"></app-social-bar>
       </div>
 
-      <div  class="home-content text-light d-flex flex-column align-items-center">
+      <div class="home-content text-light d-flex flex-column align-items-center">
 
           <div class="w-100">
             <app-presentation [presentationContent]="content.home.presentation"></app-presentation>
@@ -42,10 +42,9 @@ import { IContent } from 'src/app/shared/models/home.model';
     }
 
     .home-content {
-      width: 80%;
+      width: 75%;
       /*background: rgba(255, 255, 255, 0.077);
       box-shadow: 0px 0px 22px 14px #37DBD6;*/
-
       overflow-y: scroll;
     }
 

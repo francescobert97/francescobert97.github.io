@@ -28,7 +28,7 @@ export const CONTENT:IContent[] = [
                         id: 1,
                         name: 'Rxjs',
                         icon: '../../../../assets/icons/rxjs-icon.png',
-                        description: ' è un framework open source per lo sviluppo di applicazioni web',
+                        description: `è una libreria per gestire eventi asincroni tramite l'utilizzo del concetto di Observarble e del paradigma funzionale (reattivo).`,
                         animation: false,
                         time: 1000,
                         showDescription: false
@@ -37,7 +37,7 @@ export const CONTENT:IContent[] = [
                         id: 2,
                         name: 'Typescript',
                         icon: '../../../../assets/icons/typescript-icon.png',
-                        description: ' è un framework open source per lo sviluppo di applicazioni web',
+                        description: 'Si tratta di un Super-set di JavaScript che basa le sue caratteristiche su ECMAScript 6',
                         animation: false,
                         time: 1500,
                         showDescription: false
@@ -46,7 +46,7 @@ export const CONTENT:IContent[] = [
                         id: 3,
                         name: 'Javascript',
                         icon: '../../../../assets/icons/javascript-icon.png',
-                        description: ' è un framework open source per lo sviluppo di applicazioni web',
+                        description: 'è un linguaggio di scripting lato client utilizzato per rendere interattive le pagine web.',
                         animation: false,
                         time: 2000,
                         showDescription: false
@@ -55,7 +55,7 @@ export const CONTENT:IContent[] = [
                         id: 4,
                         name: 'CSS3',
                         icon: '../../../../assets/icons/css-icon.png',
-                        description: ' è un framework open source per lo sviluppo di applicazioni web',
+                        description: `è un linguaggio che gestisce il design e la presentazione delle pagine web (cioè l'aspetto estetico)`,
                         animation: false,
                         time: 2500,
                         showDescription: false
@@ -64,7 +64,7 @@ export const CONTENT:IContent[] = [
                         id: 5,
                         name: 'HTML5',
                         icon: '../../../../assets/icons/html-icon.png',
-                        description: ' è un framework open source per lo sviluppo di applicazioni web',
+                        description: 'è un linguaggio di markup. Nato per la formattazione e impaginazione di documenti ipertestuali disponibili nel web 1.0',
                         animation: false,
                         time: 3000,
                         showDescription: false

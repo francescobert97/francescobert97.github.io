@@ -65,8 +65,9 @@ import { HomeService } from '../services/home.service';
         background: rgba(0, 0, 0, 0.477);
         box-shadow: 0px 0px 22px 4px #37dbd6;
         padding: 2.5rem;
-        margin: 0 3rem;
-        margin-top: 10rem;
+        margin-left: 3rem;
+        margin-top: 14rem;
+        margin-bottom: 1rem;
         width: 92%;
         height: 65%;
         border-radius: 30px;
@@ -119,7 +120,9 @@ import { HomeService } from '../services/home.service';
 
     @media screen and (max-width: 856px) {
       .project-list {
-        margin: 7.5rem 0.7rem;
+        margin-left: 2rem;
+        margin-top: 13rem;
+        height: 25rem;
         .project-card {
           width: 15.5rem;
           height: 15.5rem;
@@ -137,7 +140,9 @@ import { HomeService } from '../services/home.service';
 
     @media screen and (max-width: 600px) {
       .project-list {
-        margin: 4rem 0.7rem;
+        height: 25rem;
+        margin-left: 1rem;
+        margin-top: 10rem;
         .project-card {
           width: 12.5rem;
           height: 12.5rem;
@@ -155,7 +160,9 @@ import { HomeService } from '../services/home.service';
 
     @media screen and (max-width: 456px) {
       .project-list {
-        margin: 1.5rem 0.7rem;
+        height: 20rem;
+        margin-left: 1rem;
+        margin-top: 13rem;
         .project-card {
           width: 10rem;
           height: 10rem;
