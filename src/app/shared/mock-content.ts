@@ -78,16 +78,21 @@ export const CONTENT:IContent[] = [
                         imgCover: '../../assets/projects/f-stream/f-stream-home.png',
                         projectImg: [
                             '../../assets/projects/f-stream/f-stream-landing.png',
-                            '../../assets/projects/f-stream/f-stream-animation.png'
+                            '../../assets/projects/f-stream/f-stream-animation.png',
+                            '../../assets/projects/f-stream/f-stream-home.png'
                         ],
-                        description: 'Sito di streaming di fantasia, contenente semplice autenticazione, guardie per le rotte accessibili solo da loggati.'
+                        description: 'Sito di streaming di fantasia, contenente semplice autenticazione, guardie per le rotte accessibili solo da loggati.',
+                        imgResize: 'f-stream-img-resize'
                     },
                     {
                         id: 1,
                         name: 'myportfolio',
                         imgCover: '../../assets/projects/myportfolio/myportfolio-home.png',
-                        projectImg: [],
-                        description: 'Lo stai già vedendo, ma è pur sempre un mio progetto no?'
+                        projectImg: [
+                            '../../assets/projects/myportfolio/myportfolio-home.png'
+                        ],
+                        description: 'Lo stai già vedendo, ma è pur sempre un mio progetto no?',
+                        imgResize: 'myportfolio-img-resize'
                     }
                 ]
         }

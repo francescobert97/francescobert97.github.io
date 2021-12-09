@@ -15,7 +15,7 @@ export interface IAnimation {
   template: `
   <div class="background-animation" [class]="animation.closeAnimation? 'end-animation' : null">
     <div>
-      <p class="text-light" [class]="animation.sizeName? 'animation-size-name' : null" *ngIf="animation.hideName">Francesco.exe</p>
+      <p class="text-light" [class]="animation.sizeName? 'animation-size-name' : null" *ngIf="animation.hideName">{{text2}}</p>
 
       <button class="btn text-light" [class]="animation.buttonAnimation? 'button-animation' : null" *ngIf="animation.hideButton" (click)="endAnimation()">Clicca per Eseguire!</button>
     </div>
@@ -34,8 +34,8 @@ export interface IAnimation {
         position: absolute;
         top: 59.2%;
         left: 45.8%;
-        text-shadow: -3px -1px 21px rgba(108, 255, 215, 1);
-        transition: 1.4s;
+        text-shadow: -1px 1px 7px rgba(108, 255, 215, 1);
+        transition: 3.4s;
       }
 
       button {
@@ -149,17 +149,34 @@ export class AnimationComponent implements OnInit {
     hideButton: true,
     closeAnimation:false
   }
+  
+  text2:string = 'Francesco.exe'
 
   constructor(private router:Router, private changeDetection:ChangeDetectorRef) { }
 
   ngOnInit(): void {
+    
   }
 
+  test() {
+    
+    let i = 13;
+    const text = 'Francesco.exe';
+     const nameAnimation = setInterval(() => {
+         this.text2 = this.text2.substr(0, this.text2.length -1)
+          i-- 
+          if(i < 0) { clearInterval(nameAnimation) }
+        }
+        , 50);
 
+        
+        
+  }
   public endAnimation(): void {
 
     this.animation.sizeName = true;
 
+    this.test();
 
    setTimeout(() => this.animation.hideName = false, 1000);
 

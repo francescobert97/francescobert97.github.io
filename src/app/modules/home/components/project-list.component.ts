@@ -207,6 +207,7 @@ export class ProjectListComponent implements OnInit {
     localStorage.setItem('projectData', JSON.stringify(project));
   }
   private getResultSearch(searchText: string) {
+    
     const found = this.projectListContent.find(
       (project) => project.name === searchText
     );

@@ -14,7 +14,7 @@ import { ITecnology } from 'src/app/shared/models/home.model';
     <div
       class="container-stack d-flex justify-content-center align-items-center"
     >
-      <h2 class="mt-3">Il mio stack tecnologico</h2>
+      <h2 class="mt-3 text-shadow-green">Il mio stack tecnologico</h2>
 
       <div class="contain-scale-effect">
         <div
@@ -51,7 +51,6 @@ import { ITecnology } from 'src/app/shared/models/home.model';
 
         h2 {
           font-size: 1.7em;
-          text-shadow: -3px -1px 21px rgba(108, 255, 215, 1);
         }
 
         .contain-scale-effect {

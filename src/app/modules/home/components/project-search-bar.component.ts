@@ -6,12 +6,11 @@ import { debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs
 @Component({
   selector: 'app-project-search-bar',
   template: `
-   <input class="search-bar " (keypress)="sendSearchAtParent($event)" [formControl]="searchInput" name="search" type="search" placeholder="cerca tra i progetti">
+   <input class="search-bar box-shadow-green text-light" (keypress)="sendSearchAtParent($event)" [formControl]="searchInput" name="search" type="search" placeholder="cerca tra i progetti">
   `,
   styles: [
     `
     .search-bar {
-      box-shadow: 0px 0px 22px -2px #37dbd6;
       border-radius: 10px;
       background: black;
       border: none;

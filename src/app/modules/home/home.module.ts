@@ -11,6 +11,7 @@ import { ProjectListComponent } from './components/project-list.component';
 import { ProjectSearchListComponent } from './pages/project-search-list.component';
 import { ProjectSearchBarComponent } from './components/project-search-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProjectCardComponent } from './components/project-card.component';
 
 
 @NgModule({
@@ -22,11 +23,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SocialBarComponent,
     ProjectListComponent,
     ProjectSearchListComponent,
-    ProjectSearchBarComponent
+    ProjectSearchBarComponent,
+    ProjectCardComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
+    FormsModule,
     ReactiveFormsModule
   ]
 })
