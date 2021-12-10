@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { AccessHomeService } from 'src/app/shared/services/access-home.service';
 
 export interface IAnimation {
   sizeName: boolean,
@@ -152,7 +153,7 @@ export class AnimationComponent implements OnInit {
   
   text2:string = 'Francesco.exe'
 
-  constructor(private router:Router, private changeDetection:ChangeDetectorRef) { }
+  constructor(private router:Router, private changeDetection:ChangeDetectorRef, private accessHome: AccessHomeService) { }
 
   ngOnInit(): void {
     
@@ -192,8 +193,10 @@ export class AnimationComponent implements OnInit {
   
     }, 2000);
    
+    this.accessHome.setAccessToHome(true);
 
     setTimeout(() =>  this.router.navigateByUrl('/home'), 2300);
+    
   }
 
 }
