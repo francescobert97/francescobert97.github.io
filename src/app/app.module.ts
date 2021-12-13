@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,7 +16,8 @@ import { UikitmoduleModule } from './shared/uikitmodule/uikitmodule.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UikitmoduleModule
+    UikitmoduleModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

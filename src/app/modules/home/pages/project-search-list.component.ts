@@ -1,11 +1,13 @@
 import {
   ChangeDetectorRef,
   Component,
+  OnDestroy,
   OnInit,
   ɵCodegenComponentFactoryResolver,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { IProject } from 'src/app/shared/models/home.model';
+import { AccessHomeService } from 'src/app/shared/services/access-home.service';
 import { HomeService } from '../services/home.service';
 
 @Component({
@@ -13,7 +15,7 @@ import { HomeService } from '../services/home.service';
   template: `
     <div class="project-section w-100 d-flex flex-column justify-content-center align-items-center">
       <div class="my-4 ms-5  d-flex justify-content-start w-100">
-        <button class="btn text-light" (click)="returnToHome()">
+        <button class="personal-font-style btn bg-dark box-shadow-green text-light" (click)="returnToHome()">
           Torna alla Home
         </button>
       </div>
@@ -44,20 +46,29 @@ import { HomeService } from '../services/home.service';
     `,
   ],
 })
-export class ProjectSearchListComponent implements OnInit {
+export class ProjectSearchListComponent implements OnInit, OnDestroy {
   project!: IProject;
-  constructor(private router: Router, private homeService: HomeService) {}
+  constructor(private router: Router, private accessHome: AccessHomeService) {}
 
   ngOnInit(): void {
     
     this.getProject();
-    console.log(this.project)
+    console.log(this.project);
   }
 
   public returnToHome() {
     this.router.navigateByUrl('home');
   }
 
+  ngOnDestroy() {
+    if(localStorage.projectData) {
+      console.log('eseguito')
+      this.accessHome.setAccessToHome(true);
+      this.accessHome.getAccessToHome();
+      localStorage.removeItem('projectData');
+    }
+   
+  }
   private updateLocalStorage() {
     const projectObj = JSON.parse(
       localStorage.getItem('projectData') as string
@@ -67,5 +78,6 @@ export class ProjectSearchListComponent implements OnInit {
 
   private getProject() {
     this.updateLocalStorage();
+
   }
 }

@@ -23,7 +23,7 @@ export class ProjectGuard implements CanActivate  {
         return true;
       }else {
         
-        return this.router.navigateByUrl('/home')
+        return this.router.navigateByUrl('/error')
       }
      
     }

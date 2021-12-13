@@ -10,6 +10,15 @@ body {
         text-shadow: -3px -1px 21px rgba(108, 255, 215, 1);
     }
 
+    .personal-font-style {
+        font-family: Georgia, serif;
+        letter-spacing: 0.4px;
+        word-spacing: -0.2px;
+        font-weight: 400;
+        text-decoration: none solid rgb(68, 68, 68);
+        font-style: italic;
+        font-variant: small-caps;
+    }
     .box-shadow-green {
         box-shadow: 0px 0px 22px -2px #37dbd6;
     }

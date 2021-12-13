@@ -24,12 +24,12 @@ export interface ISocial {
   styles: [
     `
     .social-bar {
-      width: 80%;
+      width: 70%;
       overflow: hidden;
       background: #23c9c3a6;
       background: rgba(0, 0, 0, 0.477);
       border-radius: 30px;
-      padding: 1rem;
+      padding: 1.5rem;
       box-shadow: 0px 0px 22px 4px #37DBD6;
       
       .open-button {
@@ -61,10 +61,10 @@ export interface ISocial {
         width: 8rem;
         padding: 1.2rem;
         .open-button {
-          margin-left: 0.5rem;
+          margin-left: 1.1rem;
           img {
-            width: 3.5rem;
-            height: 3.5rem;
+            width: 4.2rem;
+            height: 4.2rem;
           }
         }
 
@@ -79,6 +79,7 @@ export interface ISocial {
 
     @media screen and (max-width: 600px) {
       .social-bar {
+       
         position: absolute;
         top: 1%;
         left: 1%;
@@ -104,6 +105,7 @@ export interface ISocial {
 
     @media screen and (max-width: 456px) {
       .social-bar {
+        width: 20%;
         position: absolute;
         top: 1%;
         left: 1%;

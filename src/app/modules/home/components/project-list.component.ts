@@ -15,10 +15,7 @@ import { HomeService } from '../services/home.service';
       </div>
 
       <div>
-        <div
-          class="d-flex"
-          *ngIf="searchResults.length <= 0; else projectResult"
-        >
+        <div class="d-flex" *ngIf="!searchResults.length; else projectResult">
           <ng-container *ngFor="let project of projectListContent">
             <div
               (click)="showfullProject(project.id, project)"
@@ -30,9 +27,13 @@ import { HomeService } from '../services/home.service';
                 class="project-card-label d-flex flex-column justify-content-around align-items-center"
               >
                 <h4>{{ project.name | uppercase }}</h4>
-                <p class="text-center">{{ project.description }}</p>
+                <p class="personal-font-style text-center">
+                  {{ project.description }}
+                </p>
 
-                <p class="text-center">clicca per maggiori dettagli.</p>
+                <p class="personal-font-style text-center">
+                  clicca per maggiori dettagli.
+                </p>
               </div>
             </div>
           </ng-container>
@@ -81,13 +82,13 @@ import { HomeService } from '../services/home.service';
           border-radius: 20px;
           transform: rotate3d(1, -10, 1, 30deg);
           transition: 2s;
-          overflow:hidden;
+          overflow: hidden;
 
           img {
             margin-left: 150px;
             width: 190%;
             height: 120%;
-        
+
             border-radius: 20px;
           }
 
@@ -114,69 +115,68 @@ import { HomeService } from '../services/home.service';
         }
       }
 
-    @media screen and (max-width: 1200px) {
-   
-    }
+      @media screen and (max-width: 1200px) {
+      }
 
-    @media screen and (max-width: 856px) {
-      .project-list {
-        margin-left: 2rem;
-        margin-top: 13rem;
-        height: 25rem;
-        .project-card {
-          width: 15.5rem;
-          height: 15.5rem;
-          h4{
-            font-size: 1.4em;
-          }
-          p{
-            margin: 0.6rem 0;
-            max-height: 3.5rem;
-            font-size: 0.7em;
+      @media screen and (max-width: 856px) {
+        .project-list {
+          margin-left: 2rem;
+          margin-top: 13rem;
+          height: 25rem;
+          .project-card {
+            width: 15.5rem;
+            height: 15.5rem;
+            h4 {
+              font-size: 1.4em;
+            }
+            p {
+              margin: 0.6rem 0;
+              max-height: 3.5rem;
+              font-size: 0.7em;
+            }
           }
         }
       }
-    }
 
-    @media screen and (max-width: 600px) {
-      .project-list {
-        height: 25rem;
-        margin-left: 1rem;
-        margin-top: 10rem;
-        .project-card {
-          width: 12.5rem;
-          height: 12.5rem;
-          h4{
-            font-size: 1.4em;
-          }
-          p{
-            margin: 0.6rem 0;
-            max-height: 3.5rem;
-            font-size: 0.7em;
+      @media screen and (max-width: 600px) {
+        .project-list {
+          height: 25rem;
+          margin-left: 1rem;
+          margin-top: 10rem;
+          .project-card {
+            width: 12.5rem;
+            height: 12.5rem;
+            h4 {
+              font-size: 1.4em;
+            }
+            p {
+              margin: 0.6rem 0;
+              max-height: 3.5rem;
+              font-size: 0.7em;
+            }
           }
         }
       }
-    }
 
-    @media screen and (max-width: 456px) {
-      .project-list {
-        height: 20rem;
-        margin-left: 1rem;
-        margin-top: 13rem;
-        .project-card {
-          width: 10rem;
-          height: 10rem;
-          h4{
-            font-size: 1.2em;
-          }
-          p{
-            margin: 0.3rem 0;
-            max-height: 3.5rem;
-            font-size: 0.5em;
+      @media screen and (max-width: 456px) {
+        .project-list {
+          height: 20rem;
+          margin-left: 1rem;
+          margin-top: 13rem;
+          .project-card {
+            width: 10rem;
+            height: 10rem;
+            h4 {
+              font-size: 1.2em;
+            }
+            p {
+              margin: 0.3rem 0;
+              max-height: 3.5rem;
+              font-size: 0.5em;
+            }
           }
         }
       }
-    }
     `,
   ],
 })
@@ -207,9 +207,8 @@ export class ProjectListComponent implements OnInit {
     localStorage.setItem('projectData', JSON.stringify(project));
   }
   private getResultSearch(searchText: string) {
-    
     const found = this.projectListContent.find(
-      (project) => project.name === searchText
+      (project) => project.name.indexOf(searchText) === 0
     );
 
     if (
@@ -217,9 +216,9 @@ export class ProjectListComponent implements OnInit {
       !this.searchResults.some((project) => project.name === found.name)
     ) {
       this.searchResults.push(found as IProject);
-      console.log('push');
     }
-    if (!found || searchText.length < 3 || this.searchResults.length > 1) {
+
+    if (!found || this.searchResults.length > 1 || searchText.length < 3) {
       this.searchResults = [];
     }
   }

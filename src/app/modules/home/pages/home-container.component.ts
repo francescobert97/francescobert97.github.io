@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CONTENT } from 'src/app/shared/mock-content';
 import { IContent } from 'src/app/shared/models/home.model';
+import { AccessHomeService } from 'src/app/shared/services/access-home.service';
+import { HomeAccessGuard } from '../../core/home-access.guard';
 
 @Component({
   selector: 'app-home',
@@ -43,8 +45,6 @@ import { IContent } from 'src/app/shared/models/home.model';
 
     .home-content {
       width: 75%;
-      /*background: rgba(255, 255, 255, 0.077);
-      box-shadow: 0px 0px 22px 14px #37DBD6;*/
       overflow-y: scroll;
     }
 
@@ -100,7 +100,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.hearStopAnimation();
-    localStorage.clear()
+    
   }
 
   private hearStopAnimation() {

@@ -6,7 +6,7 @@ import { IPresentation } from 'src/app/shared/models/home.model';
   template: `
     <div  class="presentation my-5">
       <div class="profile-video">
-        <video src="{{presentationContent.video}}" autoplay muted loop></video>
+        <video src="{{presentationContent.video}}" autoplay muted loop playsinline></video>
           <div class="profile-picture d-flex justify-content-center align-items-center">
               <div>
                 <img src="{{presentationContent.profilePicture}}" alt="">
@@ -15,7 +15,7 @@ import { IPresentation } from 'src/app/shared/models/home.model';
       
 
         <div class="biography">
-          <p class="">{{presentationContent.biography}}</p>
+          <p class="personal-font-style">{{presentationContent.biography}}</p>
         </div>
       </div>
     </div>
@@ -121,7 +121,7 @@ import { IPresentation } from 'src/app/shared/models/home.model';
 
           .biography {
             padding: 1.2rem;
-            top: 7%;
+            top: 6%;
             left: 52%;
             font-size: 0.6em;
           }

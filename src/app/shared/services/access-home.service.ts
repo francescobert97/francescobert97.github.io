@@ -12,6 +12,12 @@ public setAccessToHome(access:boolean) {
 }
 
 public getAccessToHome() {
-  return this.access;
+  if(this.access) {
+    return true
+  }else {
+    return false;
+  }
+  
 }
+
 }

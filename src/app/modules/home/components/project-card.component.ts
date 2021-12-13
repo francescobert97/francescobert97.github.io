@@ -10,7 +10,7 @@ import { IProject } from 'src/app/shared/models/home.model';
         <h2 class="text-shadow-green">{{ project.name | uppercase }}</h2>
       </div>
       <div class="my-5 description">
-        <p class="description-project text-center my-5">
+        <p class="description-project personal-font-style text-center my-5">
           {{ project.description }}
         </p>
       </div>
