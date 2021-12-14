@@ -1,19 +1,21 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { CONTENT } from 'src/app/shared/mock-content';
 import { IContent } from 'src/app/shared/models/home.model';
-import { AccessHomeService } from 'src/app/shared/services/access-home.service';
-import { HomeAccessGuard } from '../../core/home-access.guard';
+
 
 @Component({
   selector: 'app-home',
   template: `
+    <app-scrollbar [progress]="progress"></app-scrollbar>
+
     <div class="home-container d-flex justify-content-start" [class]="secondAnimation? 'second-animation' : null">
 
       <div class="mt-5 p-3">
-        <app-social-bar (toggle)="hearShowSocialBar($event)" [opened]="openedBar"></app-social-bar>
+        <app-social-bar></app-social-bar>
       </div>
 
-      <div class="home-content text-light d-flex flex-column align-items-center">
+      <div appScroll class="home-content text-light d-flex flex-column align-items-center" (progress)="hearProgressBarScroll($event)">
 
           <div class="w-100">
             <app-presentation [presentationContent]="content.home.presentation"></app-presentation>
@@ -51,6 +53,7 @@ import { HomeAccessGuard } from '../../core/home-access.guard';
     .second-animation {
       background-size: 110%;
     }
+
 
     @media screen and (max-width: 1200px) {
       .second-animation {
@@ -94,13 +97,12 @@ export class HomeComponent implements OnInit {
   public content:IContent = CONTENT[0];
   public stopAnimation:boolean = true;
   public secondAnimation:boolean = false;
-  public openedBar: boolean = false;
+  public progress!:string;
 
   constructor() { }
 
   ngOnInit(): void {
     this.hearStopAnimation();
-    
   }
 
   private hearStopAnimation() {
@@ -109,7 +111,7 @@ export class HomeComponent implements OnInit {
     setTimeout(() => this.secondAnimation = true, 100);
   }
 
-  public hearShowSocialBar(event:any) {
-    this.openedBar = !this.openedBar;
+  public hearProgressBarScroll(event:string) {
+      this.progress = event;
   }
 }

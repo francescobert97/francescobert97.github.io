@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 export interface ISocial {
   icon: string,
   name: string,
@@ -9,7 +9,7 @@ export interface ISocial {
   selector: 'app-social-bar',
   template: `
     <div class="social-bar d-flex flex-column align-items-center justify-content-center">
-      <div (click)="toggle.emit()" class="open-button d-flex justify-content-center">
+      <div (click)="opened = !opened" class="open-button d-flex justify-content-center">
         <img src="{{icon}}" alt="icon bar">
       </div>
 
@@ -149,9 +149,9 @@ export class SocialBarComponent implements OnInit {
       link: 'francesco.dev.9@gmail.com'
     }
   ]
-  @Input() opened:boolean = false;
+  public opened:boolean = false;
   public icon: string = '../../../../assets/icons/touch.png';
-  @Output() toggle: EventEmitter<any> = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit(): void {

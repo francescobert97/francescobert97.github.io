@@ -11,7 +11,6 @@ export class HomeAccessGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      console.log('sto eseguendo il controllo...')
       if(this.accessHome.getAccessToHome()){
         return true
       }else {

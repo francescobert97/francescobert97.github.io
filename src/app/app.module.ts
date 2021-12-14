@@ -11,7 +11,7 @@ import { UikitmoduleModule } from './shared/uikitmodule/uikitmodule.module';
 @NgModule({
   declarations: [
     AppComponent,
-    AnimationComponent
+    AnimationComponent,
   ],
   imports: [
     BrowserModule,

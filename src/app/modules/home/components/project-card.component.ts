@@ -1,10 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { IProject } from 'src/app/shared/models/home.model';
 
 @Component({
   selector: 'app-project-card',
   template: `
-    <div class="project-card-section d-flex flex-column align-items-center">
+    <div
+      appScroll
+      (progress)="hearProgressBarScroll($event)"
+      class="project-card-section d-flex flex-column align-items-center"
+    >
       <div [class]="imgStyle" class="card-title d-flex justify-content-center">
         <img src="{{ project.imgCover }}" alt="immagine copertina" />
         <h2 class="text-shadow-green">{{ project.name | uppercase }}</h2>
@@ -36,7 +40,7 @@ import { IProject } from 'src/app/shared/models/home.model';
           <img
             (click)="imgClick($event)"
             src="{{ project.projectImg[counter] }}"
-            alt=""
+            alt="immagine del progetto"
           />
         </div>
       </div>
@@ -248,6 +252,7 @@ import { IProject } from 'src/app/shared/models/home.model';
 export class ProjectCardComponent implements OnInit {
   @Input() project!: IProject;
   @Input() imgStyle: string = '';
+  @Output() progress = new EventEmitter<string>();
   public counter: number = 0;
 
   constructor() {}
@@ -255,23 +260,27 @@ export class ProjectCardComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.project.projectImg.length);
   }
-  imgClick(event: any) {
+  public imgClick(event: any) {
     const total = this.project.projectImg.length - 1;
-    if(document.documentElement.clientWidth > 456) {
+    if (document.documentElement.clientWidth > 456) {
       event.layerX < 330 ? this.dec(total) : this.inc(total);
-    }else {
-      event.layerX < 150? this.dec(total) : this.inc(total);
-      console.log(event.layerX)
+    } else {
+      event.layerX < 150 ? this.dec(total) : this.inc(total);
+      console.log(event.layerX);
     }
-    //console.log(this.counter);
   }
-
-  inc(total: number) {
+  public hearProgressBarScroll(event: string) {
+    this.emitScrollPercentage(event);
+  }
+  private inc(total: number) {
     this.counter < total ? this.counter++ : (this.counter = 0);
   }
 
-  dec(total: number) {
+  private dec(total: number) {
     this.counter <= 0 ? (this.counter = total) : this.counter--;
+  }
+  private emitScrollPercentage(percentage: string) {
+    this.progress.emit(percentage);
   }
 }
 

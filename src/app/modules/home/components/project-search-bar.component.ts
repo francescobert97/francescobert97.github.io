@@ -3,17 +3,14 @@ import {
   OnInit,
   Output,
   EventEmitter,
-  ChangeDetectorRef,
+  
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { fromEvent, Observable } from 'rxjs';
 import {
   debounceTime,
   distinctUntilChanged,
-  filter,
   map,
-  switchMap,
-  tap,
 } from 'rxjs/operators';
 
 @Component({
@@ -21,7 +18,6 @@ import {
   template: `
     <input
       class="search-bar box-shadow-green text-light"
-      (keypress)="sendSearchAtParent($event)"
       [formControl]="searchInput"
       name="search"
       type="search"
@@ -46,11 +42,14 @@ export class ProjectSearchBarComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.sendSearchAtParent();
+  }
 
   searchInput = new FormControl('');
 
   private getSearchData(): Observable<string> {
+ 
     return this.searchInput.valueChanges.pipe(
       map((text) => text.toLowerCase()),
       debounceTime(400),
@@ -61,7 +60,7 @@ export class ProjectSearchBarComponent implements OnInit {
     this.resultEmitter.emit(obs);
   }
 
-  public sendSearchAtParent(event: Event) {
+  public sendSearchAtParent() {
     this.emitResult(this.getSearchData());
   }
 }

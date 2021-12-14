@@ -24,7 +24,7 @@ import { ITecnology } from 'src/app/shared/models/home.model';
             'icon-scale-effect': tecnologie.animation,
             'tech-description-visible': tecnologiesContent[idx].showDescription
           }"
-          (click)="info(idx)"
+          (click)="showInformation(idx)"
         >
           <img
             src="{{ tecnologie.icon }}"
@@ -216,6 +216,25 @@ export class TechStackComponent implements OnInit, OnDestroy {
     this.endInterval = this.getScaleAnimation();
   }
 
+  getScaleAnimation(): any[] {
+    let arr = [];
+    for (let tecnologie of this.tecnologiesContent) {
+      let intervalTecnologie = this.intervalFn(tecnologie, tecnologie.time);
+      arr.push(intervalTecnologie);
+    }
+    return arr;
+  }
+
+  public showInformation(idx: number) {
+    this.tecnologiesContent.forEach((element, index) => {
+      this.tecnologiesContent[idx] !== this.tecnologiesContent[index]
+        ? (this.tecnologiesContent[index].showDescription = false)
+        : this.tecnologiesContent[idx].showDescription
+        ? (this.tecnologiesContent[index].showDescription = false)
+        : (this.tecnologiesContent[index].showDescription = true);
+    });
+  }
+
   private intervalFn(tecnologie: ITecnology, time: number) {
     const foundIdx = this.tecnologiesContent.findIndex(
       (tcnlg) => tcnlg.id === tecnologie.id
@@ -227,30 +246,11 @@ export class TechStackComponent implements OnInit, OnDestroy {
     }, time);
   }
 
-  getScaleAnimation(): any[] {
-    let arr = [];
-    for (let tecnologie of this.tecnologiesContent) {
-      let intervalTecnologie = this.intervalFn(tecnologie, tecnologie.time);
-      arr.push(intervalTecnologie);
-    }
-    return arr;
-  }
-
-  info(idx: number) {
-    this.tecnologiesContent.forEach((element, index) => {
-      if (this.tecnologiesContent[idx] !== this.tecnologiesContent[index]) {
-        this.tecnologiesContent[index].showDescription = false;
-      } else {
-        if (this.tecnologiesContent[idx].showDescription) {
-          this.tecnologiesContent[index].showDescription = false;
-        } else {
-          this.tecnologiesContent[index].showDescription = true;
-        }
-      }
-    });
-  }
-
   ngOnDestroy() {
+    this.DestroyInterval();
+  }
+
+  private DestroyInterval() {
     for (let interval of this.endInterval) {
       clearInterval(interval);
     }
