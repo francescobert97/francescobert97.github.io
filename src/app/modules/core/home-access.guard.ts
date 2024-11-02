@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AccessHomeService } from 'src/app/shared/services/access-home.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HomeAccessGuard implements CanActivate {
+export class HomeAccessGuard  {
   constructor(private accessHome: AccessHomeService, private router:Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
