@@ -8,11 +8,10 @@ export interface ITecnology {
     id: number,
     name: string,
     icon: string,
-    description: string, 
+    description: string,
     animation: boolean,
-    time: number,
-    showDescription: boolean
-}
+    time: number
+  }
 
 export interface IProject {
     id: number,

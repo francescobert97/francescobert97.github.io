@@ -16,7 +16,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styles: [
     `
       .scrollbar-container {
-        position: relative;
+        position: fixed;
         background: transparent;
         width: 100%;
         height: 0.8rem;
@@ -32,7 +32,7 @@ import { Component, Input, OnInit } from '@angular/core';
           width: 10px;
           height: 100%;
           background: aqua;
-          -webkit-box-shadow: 50px 0px 43px -15px #00FFCC; 
+          -webkit-box-shadow: 50px 0px 43px -15px #00FFCC;
           box-shadow: 50px 0px 43px -2px #00FFCC;
           /*box-shadow: 0px 1px -195px -59px rgba(5, 255, 198, 1);
           -webkit-box-shadow: 0px 1px 195px 59px rgba(5, 255, 198, 1);

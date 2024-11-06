@@ -14,6 +14,7 @@ export class ScrollDirective {
   @Output() progress = new EventEmitter<string>();
   constructor() {}
   @HostListener('scroll', ['$event']) doSomething(event: Event) {
+    console.log('event')
     let scrollTop = (event.target as HTMLElement).scrollTop;
     let height =
       (event.currentTarget as HTMLElement).scrollHeight -

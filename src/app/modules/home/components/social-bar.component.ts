@@ -8,14 +8,14 @@ export interface ISocial {
 @Component({
   selector: 'app-social-bar',
   template: `
-    <div class="social-bar d-flex flex-column align-items-center justify-content-center">
+    <div class="social-bar d-flex flex-column align-items-center justify-content-center ms-3 position-absolute">
       <div (click)="opened = !opened" class="open-button d-flex justify-content-center">
         <img src="{{icon}}" alt="icon bar">
       </div>
 
       <div class="mt-5 shiw" *ngIf="opened">
         <a href="{{link.link}}" class="single-link-card d-flex flex-column align-items-center justify-content-center" *ngFor="let link of socialLink">
-          <img src="{{link.icon}}" alt="social link"> 
+          <img src="{{link.icon}}" alt="social link">
           <span class="text-light">{{link.name}}</span>
         </a>
       </div>
@@ -24,17 +24,18 @@ export interface ISocial {
   styles: [
     `
     .social-bar {
-      width: 70%;
+      top:1%;
+      left:0;
+      z-index: 1000;
       overflow: hidden;
-      background: #23c9c3a6;
       background: rgba(0, 0, 0, 0.477);
       border-radius: 30px;
       padding: 1.5rem;
       box-shadow: 0px 0px 22px 4px #37DBD6;
-      
+
       .open-button {
         margin-left: 1.5rem;
-        
+
         img {
           width: 7rem;
           height: 7rem;
@@ -54,10 +55,6 @@ export interface ISocial {
 
     @media screen and (max-width: 856px) {
       .social-bar {
-        position: absolute;
-        top: 1%;
-        left: 1%;
-        z-index: 1000;
         width: 8rem;
         padding: 1.2rem;
         .open-button {
@@ -79,11 +76,6 @@ export interface ISocial {
 
     @media screen and (max-width: 600px) {
       .social-bar {
-       
-        position: absolute;
-        top: 1%;
-        left: 1%;
-        z-index: 1000;
         width: 6rem;
         padding: 1.2rem;
         .open-button {
@@ -106,11 +98,6 @@ export interface ISocial {
     @media screen and (max-width: 456px) {
       .social-bar {
         width: 20%;
-        position: absolute;
-        top: 1%;
-        left: 1%;
-        z-index: 1000;
-        
         padding: 1.2rem;
         .open-button {
           margin-left: 0.5rem;
@@ -155,7 +142,7 @@ export class SocialBarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
+
   }
 
 }

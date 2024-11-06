@@ -3,10 +3,10 @@ import {
   OnInit,
   Output,
   EventEmitter,
-  
+
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { fromEvent, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -16,22 +16,44 @@ import {
 @Component({
   selector: 'app-project-search-bar',
   template: `
+  <div class="position-relative test p-3 rounded box-shadow-green">
+
     <input
       class="search-bar box-shadow-green text-light"
       [formControl]="searchInput"
       name="search"
       type="search"
-      placeholder="cerca tra i progetti"
+      placeholder="Search projects!"
     />
+  </div>
+
   `,
   styles: [
     `
+    .test {
+      background: black;
+    }
       .search-bar {
+        right: 35%;
+        top: 46%;
         border-radius: 10px;
-        background: black;
-        border: none;
+        border:1px solid rgb(0,255,255) ;
         outline: none;
         padding: 0.5rem;
+        animation: inputAnimation  2.4s infinite;
+        transform: 300px;
+      }
+      .search-bar::placeholder {
+        color: white;
+      }
+
+      @keyframes inputAnimation {
+        from {
+          background:rgb(0,255,255, 0.4);
+      }
+        to {
+           background: rgb(0,255,255, 0.8);
+      }
       }
     `,
   ],
@@ -49,9 +71,9 @@ export class ProjectSearchBarComponent implements OnInit {
   searchInput = new FormControl('');
 
   private getSearchData(): Observable<string> {
- 
+
     return this.searchInput.valueChanges.pipe(
-      map((text) => text.toLowerCase()),
+      map((text:any) => (text || '').toLowerCase()),
       debounceTime(400),
       distinctUntilChanged()
     );

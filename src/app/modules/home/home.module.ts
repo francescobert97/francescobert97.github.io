@@ -11,9 +11,9 @@ import { ProjectSearchListComponent } from './pages/project-search-list.componen
 import { ProjectSearchBarComponent } from './components/project-search-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectCardComponent } from './components/project-card.component';
-import { ScrollDirective } from '../core/directive/scroll.directive';
-import { ScrollbarComponent } from 'src/app/shared/components/scrollbar.component';
 import { UikitmoduleModule } from 'src/app/shared/uikitmodule/uikitmodule.module';
+import { ScrollDirective } from '../core/directive/scroll.directive';
+import { AppModule } from 'src/app/app.module';
 
 
 @NgModule({
@@ -26,14 +26,13 @@ import { UikitmoduleModule } from 'src/app/shared/uikitmodule/uikitmodule.module
     ProjectSearchListComponent,
     ProjectSearchBarComponent,
     ProjectCardComponent,
-    ScrollDirective
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    UikitmoduleModule
+    UikitmoduleModule,
   ]
 })
 export class HomeModule { }

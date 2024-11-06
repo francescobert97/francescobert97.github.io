@@ -1,10 +1,7 @@
 import {
   Component,
   OnInit,
-  Output,
-  EventEmitter,
-  ChangeDetectorRef,
-  ChangeDetectionStrategy,
+  ChangeDetectorRef
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccessHomeService } from 'src/app/shared/services/access-home.service';
@@ -58,7 +55,7 @@ export interface IAnimation {
         background-size: cover;
         height: 100vh;
         span {
-          
+
           margin: 0 0.2rem;
 
           font-size: 1.9em;
@@ -163,7 +160,7 @@ export class AnimationComponent implements OnInit {
     const text = 'Francesco.exe';
     // const nameAnimation = setInterval(() => {
     /* this.text2 = this.text2.substr(0, this.text2.length -1)
-          i-- 
+          i--
           if(i < 0) { clearInterval(nameAnimation) }
         }
         , 50);*/
@@ -176,6 +173,7 @@ export class AnimationComponent implements OnInit {
     }, 55);
   }
   public endAnimation(): void {
+    this.router.navigateByUrl('/home')
     this.animation.deleteCharEffect = true;
 
     setTimeout(() => this.test(), 300);

@@ -3,7 +3,6 @@ import {
   Component,
   OnDestroy,
   OnInit,
-  ɵCodegenComponentFactoryResolver,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { IProject } from 'src/app/shared/models/home.model';
@@ -12,7 +11,7 @@ import { AccessHomeService } from 'src/app/shared/services/access-home.service';
 @Component({
   selector: 'app-project-search-list',
   template: `
-    <app-scrollbar [progress]="progress"></app-scrollbar>
+  <!--  <app-scrollbar [progress]="progress"></app-scrollbar>-->
     <div
       class="w-100 d-flex flex-column justify-content-center align-items-center"
     >

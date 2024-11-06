@@ -1,204 +1,120 @@
 import {
   AfterViewChecked,
   Component,
+  ElementRef,
   Input,
   NgZone,
   OnDestroy,
   OnInit,
+  QueryList,
+  ViewChildren,
 } from '@angular/core';
 import { ITecnology } from 'src/app/shared/models/home.model';
 
 @Component({
   selector: 'app-tech-stack',
   template: `
-    <div
-      class="container-stack d-flex justify-content-center align-items-center"
-    >
-      <h2 class="mt-3 text-shadow-green">Il mio stack tecnologico</h2>
 
-      <div class="contain-scale-effect">
-        <div
+    <div
+      class="container-stack mx-auto d-flex justify-content-center align-items-center"
+    >
+      <h2 class="tecnologie-title position-absolute text-shadow-green">Il mio stack tecnologico</h2>
+
+        <ng-container
           *ngFor="let tecnologie of tecnologiesContent; let idx = index"
-          class="single-tecnologie-card"
+          >
+
+          <img
+          [ngStyle]="{'transform': 'rotate(' + (360 / tecnologiesContent.length * idx) + 'deg) translate(250px)'}"
+
           [ngClass]="{
             'icon-scale-effect': tecnologie.animation,
-            'tech-description-visible': tecnologiesContent[idx].showDescription
           }"
-          (click)="showInformation(idx)"
-        >
-          <img
+          (mouseover)="showInformation(idx)"
+          (mouseout)="showInformation(idx)"
+            class="single-tecnologie-card box-shadow-green p-2 rounded bg-light"
             src="{{ tecnologie.icon }}"
-            alt="una delle tecnologie che utilizzo."
+            alt="tecnologies icon"
           />
+
           <div
-            class="tecnologie-info"
-            *ngIf="tecnologiesContent[idx].showDescription"
+            *ngIf="showItem[idx]"
+            class="tecnologie-info box-shadow-green p-3"
           >
-            <h2>{{ tecnologie.name }}</h2>
-            <p>{{ tecnologie.description }}</p>
+            <h2 class="">{{ tecnologie.name || 'no-name' }}</h2>
+            <p>{{ tecnologie.description || 'no description' }}</p>
           </div>
-        </div>
-      </div>
+
+
+        </ng-container>
     </div>
+
   `,
   styles: [
     `
       .container-stack {
         position: relative;
-        margin: 10rem 0;
+        margin-top: 13rem;
         padding: 2rem;
-        height: 50%;
+        width: 100%;
+        height: 100%;
+        width: clamp(300px,300px, 400px);
+        min-height: 400px;
 
-        h2 {
+        .tecnologie-title {
           font-size: 1.7em;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
         }
 
-        .contain-scale-effect {
-          position: absolute;
-          top: 2%;
-          left: -14%;
-          width: 33rem;
-          height: 20rem;
-          transition: 22s;
 
-          div:nth-child(1) {
-            top: 85%;
-            left: 30%;
-          }
-
-          div:nth-child(2) {
-            left: 27%;
-            top: -45%;
-          }
-
-          div:nth-child(3) {
-            left: -15%;
-            top: -12%;
-          }
-
-          div:nth-child(4) {
-            left: 78%;
-            top: -11%;
-          }
-
-          div:nth-child(5) {
-            left: 78%;
-            top: 47%;
-          }
-
-          div:last-child {
-            left: -15%;
-            top: 47%;
-          }
 
           .single-tecnologie-card {
+            margin-left: 50px;
             position: absolute;
+            transform-origin: 10px;
             transition: 3s;
-            img {
-              width: 8.5rem;
-              height: 8.5rem;
-            }
+              width: 6rem;
+              height: 6rem;
+
 
             .tecnologie-info {
               position: absolute;
-              top: 50%;
-              left: 50%;
-              background: black;
-              padding: 1rem;
+              background: rgb(0,0,0);
               box-shadow: 0px 0px 32px -4px #37dbd6;
+              z-index: 1000;
             }
-          }
         }
       }
 
       .icon-scale-effect {
-        transform: scale(1.3);
+       // transform: scale(1.3);
       }
 
-      .tech-description-visible {
-        z-index: 10000;
-      }
+
 
       @media screen and (max-width: 856px) {
         .container-stack {
-          h2 {
-            font-size: 1.9em;
-          }
-          .contain-scale-effect {
-            .single-tecnologie-card {
-              img {
-                width: 8.2rem;
-                height: 8.2rem;
-              }
-
-              .tecnologie-info {
-                width: 6rem;
-                font-size: 0.5em;
-                top: 50%;
-                left: 0;
-              }
-            }
-          }
+           zoom:80%;
         }
       }
 
       @media screen and (max-width: 600px) {
         .container-stack {
-          margin: 6rem 0;
-          h2 {
-            font-size: 1.5em;
-          }
-          .contain-scale-effect {
-            width: 19rem;
-            height: 14rem;
-            top: 8%;
-            left: 5%;
-
-            .single-tecnologie-card {
-              img {
-                width: 4.5rem;
-                height: 4.5rem;
-              }
-
-              .tecnologie-info {
-                width: 6rem;
-                font-size: 0.5em;
-                top: 50%;
-                left: 0;
-              }
-            }
-          }
+         zoom:60%;
         }
       }
 
       @media screen and (max-width: 456px) {
         .container-stack {
-          height: 100%;
-          margin: 4rem 0;
-          padding: 0 2rem;
-          h2 {
-            font-size: 0.9em;
-          }
-          .contain-scale-effect {
-            width: 15rem;
-            height: 11rem;
-            top: 12.5%;
-            left: -3%;
-
-            .single-tecnologie-card {
-              img {
-                width: 5rem;
-                height: 5rem;
-              }
-
+              zoom:50%;
               .tecnologie-info {
                 width: 6rem;
                 font-size: 0.5em;
                 top: 50%;
                 left: 0;
               }
-            }
-          }
         }
       }
     `,
@@ -206,6 +122,8 @@ import { ITecnology } from 'src/app/shared/models/home.model';
 })
 export class TechStackComponent implements OnInit, OnDestroy {
   @Input() public tecnologiesContent: ITecnology[] = [];
+  showItem!:any[];
+
   endInterval!: any;
 
   public readonly showInfo: { [key: number]: boolean } = {};
@@ -213,7 +131,8 @@ export class TechStackComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit(): void {
-    this.endInterval = this.getScaleAnimation();
+   // this.endInterval = this.getScaleAnimation();
+    this.showItem = new Array(this.tecnologiesContent.length).fill(false)
   }
 
   getScaleAnimation(): any[] {
@@ -226,13 +145,7 @@ export class TechStackComponent implements OnInit, OnDestroy {
   }
 
   public showInformation(idx: number) {
-    this.tecnologiesContent.forEach((element, index) => {
-      this.tecnologiesContent[idx] !== this.tecnologiesContent[index]
-        ? (this.tecnologiesContent[index].showDescription = false)
-        : this.tecnologiesContent[idx].showDescription
-        ? (this.tecnologiesContent[index].showDescription = false)
-        : (this.tecnologiesContent[index].showDescription = true);
-    });
+      this.showItem[idx] = !this.showItem[idx];
   }
 
   private intervalFn(tecnologie: ITecnology, time: number) {
