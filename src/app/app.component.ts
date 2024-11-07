@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
       <app-scrollbar [progress]="progress"></app-scrollbar>
 
-      <div appScroll class="container-fluid p-0"  (progress)="hearProgressBarScroll($event)">
+      <div appScroll class="container-fluid h-100 p-0"  (progress)="hearProgressBarScroll($event)">
         <router-outlet></router-outlet>
       </div>
   `,

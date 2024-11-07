@@ -25,7 +25,7 @@ import { ITecnology } from 'src/app/shared/models/home.model';
           >
 
           <img
-          [ngStyle]="{'transform': 'rotate(' + (360 / tecnologiesContent.length * idx) + 'deg) translate(250px)'}"
+          [ngStyle]="{'transform': 'rotate(' + (360 / tecnologiesContent.length * idx) + 'deg) translate(135px)'}"
 
           [ngClass]="{
             'icon-scale-effect': tecnologie.animation,
@@ -54,7 +54,6 @@ import { ITecnology } from 'src/app/shared/models/home.model';
     `
       .container-stack {
         position: relative;
-        margin-top: 13rem;
         padding: 2rem;
         width: 100%;
         height: 100%;
@@ -75,8 +74,8 @@ import { ITecnology } from 'src/app/shared/models/home.model';
             position: absolute;
             transform-origin: 10px;
             transition: 3s;
-              width: 6rem;
-              height: 6rem;
+              width: 4.5rem;
+              height: 4.5rem;
 
 
             .tecnologie-info {
@@ -94,23 +93,29 @@ import { ITecnology } from 'src/app/shared/models/home.model';
 
 
 
-      @media screen and (max-width: 856px) {
+      @media screen and (max-width: 1200px) {
         .container-stack {
-           zoom:80%;
+           zoom:85%;
         }
       }
 
-      @media screen and (max-width: 600px) {
+      @media screen and (max-width: 856px) {
         .container-stack {
-         zoom:60%;
+          // zoom:70%;
+        }
+      }
+
+
+      @media screen and (max-width: 576px) {
+        .container-stack {
+
         }
       }
 
       @media screen and (max-width: 456px) {
         .container-stack {
-              zoom:50%;
               .tecnologie-info {
-                width: 6rem;
+                width: 100%;
                 font-size: 0.5em;
                 top: 50%;
                 left: 0;

@@ -8,7 +8,7 @@ import { IPresentation } from 'src/app/shared/models/home.model';
 
 <div class="monitor box-shadow-green position-absolute"></div>
 
-    <div  class=" presentation overflow-hidden position-relative mt-sm-5 box-shadow-green w-100">
+    <div  class="presentation overflow-hidden position-relative mt-sm-2 mt-md-1 mt-lg-4  box-shadow-green w-100">
       <video class="" src="{{presentationContent.video}}" autoplay muted loop playsinline></video>
 
       <div class="personal-content position-absolute gap-4 d-flex justify-content-between  box-shadow-green rounded col-11 ms-4 me-1 p-3 ">
@@ -90,8 +90,10 @@ import { IPresentation } from 'src/app/shared/models/home.model';
       }
     }
 
-    @media screen and (max-width: 856px) {
+    @media screen and (max-width: 1200px) {
       .presentation {
+       // max-height: 300px;
+
           .personal-content {
             max-height: 10rem;
             font-size: 0.6em;
@@ -110,7 +112,6 @@ import { IPresentation } from 'src/app/shared/models/home.model';
       }
       .monitor { display:none;}
       .presentation {
-          max-height: 300px;
           border: 0;
           border-bottom: 5px solid black;
           border-radius: 0;

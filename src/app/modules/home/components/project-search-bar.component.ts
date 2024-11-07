@@ -16,7 +16,6 @@ import {
 @Component({
   selector: 'app-project-search-bar',
   template: `
-  <div class="position-relative test p-3 rounded box-shadow-green">
 
     <input
       class="search-bar box-shadow-green text-light"
@@ -25,23 +24,17 @@ import {
       type="search"
       placeholder="Search projects!"
     />
-  </div>
 
   `,
   styles: [
     `
-    .test {
-      background: black;
-    }
+
       .search-bar {
-        right: 35%;
-        top: 46%;
         border-radius: 10px;
         border:1px solid rgb(0,255,255) ;
         outline: none;
-        padding: 0.5rem;
+        padding: 0.2rem;
         animation: inputAnimation  2.4s infinite;
-        transform: 300px;
       }
       .search-bar::placeholder {
         color: white;

@@ -11,7 +11,6 @@ import { AccessHomeService } from 'src/app/shared/services/access-home.service';
 @Component({
   selector: 'app-project-search-list',
   template: `
-  <!--  <app-scrollbar [progress]="progress"></app-scrollbar>-->
     <div
       class="w-100 d-flex flex-column justify-content-center align-items-center"
     >
