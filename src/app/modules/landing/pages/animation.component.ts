@@ -17,7 +17,7 @@ export interface IAnimation {
 @Component({
   selector: 'app-animation',
   template: `
-  <video [class]="animation.closeAnimation ? 'end-animation' : null" #videoAnimation class="vh-100 vw-100 bg-animation" src="../assets/template/96c63244-766f-429a-a41f-c497d7a1d66f_restream.webm" ></video>
+  <video [class]="animation.closeAnimation ? 'end-animation' : null" #videoAnimation playsinline muted class="vh-100 vw-100 bg-animation" src="../assets/template/96c63244-766f-429a-a41f-c497d7a1d66f_restream.webm" ></video>
     <div class="wh-100 background-animation d-flex justify-content-center align-items-center">
         <button [class]="animation.closeAnimation ? 'end-animation' : null"
           class="btn text-light text-shadow-green"
