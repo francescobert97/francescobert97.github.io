@@ -1,13 +1,8 @@
 import {
-  AfterViewChecked,
   Component,
-  ElementRef,
   Input,
-  NgZone,
   OnDestroy,
-  OnInit,
-  QueryList,
-  ViewChildren,
+  OnInit
 } from '@angular/core';
 import { ITecnology } from 'src/app/shared/models/home.model';
 
@@ -15,55 +10,47 @@ import { ITecnology } from 'src/app/shared/models/home.model';
   selector: 'app-tech-stack',
   template: `
 
-    <div
-      class="container-stack mt-2 mx-auto d-flex justify-content-center align-items-center"
-    >
-      <h2 class="tecnologie-title  text-center text-shadow-green">My technologies</h2>
 
+      <div class="position-relative container-stack ">
+        <h2 class="tecnologie-title  text-center text-shadow-green">My technologies</h2>
         <ng-container
-          *ngFor="let tecnologie of tecnologiesContent; let idx = index"
-          >
+            *ngFor="let tecnologie of tecnologiesContent; let idx = index"
+            >
 
-          <img
-          [ngStyle]="{'transform': 'rotate(' + (360 / tecnologiesContent.length * idx) + 'deg) translate(140px)'}"
+            <img
+            [ngStyle]="{'transform': 'rotate(' + (360 / tecnologiesContent.length * idx) + 'deg)'}"
 
 
-          (mouseover)="showInformation(idx)"
-          (mouseout)="showInformation(idx)"
-            class="single-tecnologie-card box-shadow-green p-2 rounded bg-light"
-            src="{{ tecnologie.icon }}"
-            alt="tecnologies icon"
-          />
+            (mouseover)="showInformation(idx)"
+            (mouseout)="showInformation(idx)"
+              class="single-tecnologie-card box-shadow-green p-2 rounded bg-light"
+              src="{{ tecnologie.icon }}"
+              alt="tecnologies icon"
+            />
 
-          <div
-            *ngIf="showItem[idx]"
-            class="tecnologie-info rounded position-absolute box-shadow-green p-2"
-          >
-            <h2 class="">{{ tecnologie.name || 'no-name' }}</h2>
-            <p>{{ tecnologie.description || 'no description' }}</p>
-          </div>
-        </ng-container>
-    </div>
+            <div
+              *ngIf="showItem[idx]"
+              class="tecnologie-info rounded position-absolute box-shadow-green p-2"
+            >
+              <h2 class="">{{ tecnologie.name || 'no-name' }}</h2>
+              <p>{{ tecnologie.description || 'no description' }}</p>
+            </div>
+          </ng-container>
+      </div>
 
   `,
   styles: [
     `
       .container-stack {
-        position: relative;
         padding: 2rem;
-        width: 100%;
-        height: 100%;
-        width: clamp(300px,300px, 400px);
-        min-height: 400px;
-
         .tecnologie-title {
           font-size: 1.7em;
-
         }
           .single-tecnologie-card {
-            margin-left: 50px;
             position: absolute;
-            transform-origin: 10px;
+            left:-28%;
+            top:24%;
+            transform-origin: 210px;
             transition: 3s;
               max-width: 4.5rem;
               max-height: 4.5rem;
@@ -75,6 +62,8 @@ import { ITecnology } from 'src/app/shared/models/home.model';
               z-index: 10000;
               font-size: 0.8em;
               width:50%;
+              top:0;
+              left:30%;
               h2 {
                 font-size:1.7em;
               }
@@ -85,6 +74,7 @@ import { ITecnology } from 'src/app/shared/models/home.model';
         .container-stack {
 
           .single-tecnologie-card {
+
             max-width: 3.5rem;
             max-height: 3.5rem;
            }
@@ -98,6 +88,8 @@ import { ITecnology } from 'src/app/shared/models/home.model';
 
         }
           .single-tecnologie-card {
+
+            transform-origin: 140px;
             max-width: 2.5rem;
             max-height: 2.5rem;
            }
@@ -123,7 +115,7 @@ export class TechStackComponent implements OnInit, OnDestroy {
 
   endInterval!: any;
 
-  public readonly showInfo: { [key: number]: boolean } = {};
+  //public readonly showInfo: { [key: number]: boolean } = {};
 
   constructor() {}
 

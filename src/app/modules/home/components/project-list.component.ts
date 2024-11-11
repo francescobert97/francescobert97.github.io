@@ -5,7 +5,7 @@ import { IProject } from 'src/app/shared/models/home.model';
 @Component({
   selector: 'app-project-list',
   template: `
-    <div class="project-list p-4 mt-4 d-flex flex-column box-shadow-green align-items-center">
+    <div class="project-list p-4 d-flex flex-column box-shadow-green align-items-center">
       <div class="mb-4">
         <app-project-search-bar
           (resultEmitter)="hearSearchResult($event)"
