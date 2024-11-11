@@ -1,7 +1,6 @@
 {
   "name": "myportfolio",
   "version": "0.0.0",
-  "homepage": "https://francescobert97.github.io",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
