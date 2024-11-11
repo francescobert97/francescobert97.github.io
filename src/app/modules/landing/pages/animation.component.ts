@@ -99,7 +99,7 @@ export class AnimationComponent implements OnInit {
 
 
   public endAnimation(): void {
-    const time= 300;
+    const time= 3000;
     const videoElement = this.videoRef.nativeElement;
     videoElement.loop = true;
     videoElement.play();
