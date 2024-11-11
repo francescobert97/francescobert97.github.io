@@ -6,7 +6,10 @@
   --box-shadow-green: 0px 0px 22px -2px #37dbd6;
 }
 body, html {
-
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
   overflow: hidden;
   .background {
     background: url('./assets/template/background-p.jpg') center;
@@ -16,7 +19,7 @@ body, html {
     background: url('./assets/template/background-s.jpg') center;
     background-size: cover;
   }
-  height: 100dvh;
+  height: 100vh;
   box-sizing: border-box;
   padding: 0;
   background-size: cover;
