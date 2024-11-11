@@ -12,8 +12,8 @@ import { ProjectSearchBarComponent } from './components/project-search-bar.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectCardComponent } from './components/project-card.component';
 import { UikitmoduleModule } from 'src/app/shared/uikitmodule/uikitmodule.module';
-import { ScrollDirective } from '../core/directive/scroll.directive';
-import { AppModule } from 'src/app/app.module';
+import { ProjectsCardComponent } from './components/projects-card.component';
+import { LinksBarComponent } from './components/links-bar.component';
 
 
 @NgModule({
@@ -26,6 +26,8 @@ import { AppModule } from 'src/app/app.module';
     ProjectSearchListComponent,
     ProjectSearchBarComponent,
     ProjectCardComponent,
+    ProjectsCardComponent,
+    LinksBarComponent
   ],
   imports: [
     CommonModule,

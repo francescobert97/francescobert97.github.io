@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ErrorPageComponent } from '../components/error-page.component';
 import { ScrollbarComponent } from '../components/scrollbar.component';
 import { ScrollDirective } from 'src/app/modules/core/directive/scroll.directive';
+import { CustomButtonComponent } from '../components/custom-button.component';
 
 
 
@@ -10,7 +11,8 @@ import { ScrollDirective } from 'src/app/modules/core/directive/scroll.directive
   declarations: [
     ErrorPageComponent,
     ScrollbarComponent,
-    ScrollDirective
+    ScrollDirective,
+    CustomButtonComponent
 
   ],
   imports: [
@@ -18,7 +20,8 @@ import { ScrollDirective } from 'src/app/modules/core/directive/scroll.directive
   ],
   exports: [
     ScrollbarComponent,
-    ScrollDirective
+    ScrollDirective,
+    CustomButtonComponent
   ]
 })
 export class UikitmoduleModule { }

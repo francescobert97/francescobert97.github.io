@@ -2,20 +2,32 @@
 
 :root {
   --border: 70px;
+  --text-shadow-green: -3px -1px 21px rgba(108, 255, 215, 1);
+  --box-shadow-green: 0px 0px 22px -2px #37dbd6;
 }
 body, html {
-  height: 100%;
+
+  overflow: hidden;
+  .background {
+    background: url('./assets/template/background-p.jpg') center;
+    background-size: cover;
+  }
+  .background-2 {
+    background: url('./assets/template/background-s.jpg') center;
+    background-size: cover;
+  }
+  height: 100vh;
   box-sizing: border-box;
   padding: 0;
-    background: black;
-    background: url('./assets/template/background-s.jpg') center;
+  background-size: cover;
 
 
-    .text-shadow-green {
-        text-shadow: -3px -1px 21px rgba(108, 255, 215, 1);
-    }
 
-    .personal-font-style {
+  .text-shadow-green {
+      text-shadow: var(--text-shadow-green);
+  }
+
+  .personal-font-style {
         font-family: Georgia, serif;
         letter-spacing: 0.4px;
         word-spacing: -0.2px;
@@ -25,11 +37,13 @@ body, html {
         font-variant: small-caps;
     }
     .box-shadow-green {
-        box-shadow: 0px 0px 22px -2px #37dbd6;
+        box-shadow: var(--box-shadow-green);
     }
 
     .d-none {
       display: none;
     }
+
+
 }
 

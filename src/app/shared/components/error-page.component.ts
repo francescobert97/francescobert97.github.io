@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
     <div class="box-shadow-green d-flex flex-column justify-content-around align-items-center">
       <h1 class="text-center">ACCESSO NEGATO</h1>
       <p class="text-center">Ti è stato vietato l'accesso perchè hai provato ad accedere ad un'area a cui non hai diritto di accedere oppure ad un percorso inesistente</p>
-      <button (click)="router.navigateByUrl('')" class="box-shadow-green p-1 text-light">Torna indietro</button>
+      <button (click)="router.navigateByUrl('/home')" class="box-shadow-green p-1 text-light">Torna indietro</button>
     </div>
   </div>
   `,
@@ -22,7 +22,7 @@ import { Router } from '@angular/router';
         border-radius: 10px;
         background: black;
         padding: 10rem;
-        
+
         button {
           background: rgba(0, 255, 255, 0.674);
           border: none;

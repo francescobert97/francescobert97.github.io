@@ -7,7 +7,7 @@ export const CONTENT:IContent[] = [
            presentation:
                 {
                     video: '../../../../assets/template/presentation-video.mp4',
-                    profilePicture: '../../../../assets/template/profile.jpeg',
+                    profilePicture: '../../../../assets/template/profile.webp',
                     biography: `Front-end developer with 3+ years of experience in web development. I help companies make unique product features focusing on high-quality code and application performance.
                     • Implemented several new user interface features, enhancing usability and making applications more user-friendly.
                     • Enhanced the agile task process by introducing standardized guidelines and requirements across teams, resulting in smooth communication, a notable 30% decrease in average task completion time, and an impressive 70% reduction in idle periods.
@@ -85,7 +85,7 @@ export const CONTENT:IContent[] = [
             project:
                 [
                     {
-                        id: 0,
+                        id: 11,
                         name: 'f-stream',
                         imgCover: '../../assets/projects/f-stream/f-stream-home.png',
                         projectImg: [
@@ -93,99 +93,66 @@ export const CONTENT:IContent[] = [
                             '../../assets/projects/f-stream/f-stream-animation.png',
                             '../../assets/projects/f-stream/f-stream-home.png'
                         ],
-                        description: 'Sito di streaming di fantasia, contenente semplice autenticazione, guardie per le rotte accessibili solo da loggati.',
-                        imgResize: 'f-stream-img-resize'
-                    },
-                    {
-                        id: 1,
-                        name: 'myportfolio',
-                        imgCover: '../../assets/projects/myportfolio/myportfolio-home.png',
-                        projectImg: [
-                            '../../assets/projects/myportfolio/myportfolio-home.png'
-                        ],
-                        description: 'Lo stai già vedendo, ma è pur sempre un mio progetto no?',
-                        imgResize: 'myportfolio-img-resize'
-                    },
+                        links: [{
+                          icon: '../../../../assets/icons/folder.webp',
+                          name: 'Repository',
+                          link: 'https://github.com/francescobert97/f-stream'
+                        },
+                        {
+                          icon: '../../../../assets/icons/live.webp',
+                          name: 'live version',
+                          link: 'https://f-stream.vercel.app/'
+                        },
+                      ],
+                        description: 'F-stream is your new go-to destination for streaming, offering a sleek, modern platform designed in bold red and black. With an intuitive interface and various sections to explore, F-stream makes it easy for users to discover and watch an extensive collection of movies available right on the platform.Whether you\'re in the mood for action-packed blockbusters or indie gems, F-stream has something for everyone. Users can dive into different categories, find hidden treasures, and enjoy their favorite films with a seamless viewing experience. No extra clutter—just pure entertainment at your fingertips.',
+
+                      },
                     {
                       id: 2,
                       name: 'myportfolio',
-                      imgCover: '../../assets/projects/myportfolio/myportfolio-home.png',
+                      imgCover: '../../assets/projects/myportfolio//my-portfolio.webp',
                       projectImg: [
-                          '../../assets/projects/myportfolio/myportfolio-home.png'
+                          '../../assets/projects/myportfolio/my-portfolio.webp'
                       ],
-                      description: 'Lo stai già vedendo, ma è pur sempre un mio progetto no?',
-                      imgResize: 'myportfolio-img-resize'
+                      links: [{
+                        icon: '../../../../assets/icons/folder.webp',
+                        name: 'Repository',
+                        link: 'https://github.com/francescobert97/pokemon-react-app'
+                      },
+                      {
+                        icon: '../../../../assets/icons/live.webp',
+                        name: 'live version',
+                        link: 'https://francescobert97.github.io/pokemon-react-app/'
+                      },
+                    ],
+                      description: 'Welcome to my Futuristic Portfolio, a cutting-edge showcase of my skills and projects. Designed with a sleek, futuristic aesthetic, this portfolio is not just a display—it\'s an experience. Explore my expertise across a range of technologies and tools, and see how I bring ideas to life through a series of innovative projects. Each section is crafted to highlight not just what I know, but how I apply it to create real-world solutions.'
                   },
                   {
                     id: 3,
-                    name: 'myportfolio',
-                    imgCover: '../../assets/projects/myportfolio/myportfolio-home.png',
+                    name: 'pokemon-app',
+                    imgCover: '../../assets/projects/pokemon-app/pokemon-app.webp',
                     projectImg: [
-                        '../../assets/projects/myportfolio/myportfolio-home.png'
+                        '../../assets/projects/pokemon-app/pokemon-app.webp',
+                        '../../assets/projects/pokemon-app/pokemon-app-2.webp',
+                        '../../assets/projects/pokemon-app/pokemon-app-3.webp',
+                        '../../assets/projects/pokemon-app/pokemon-app-4.webp',
+                        '../../assets/projects/pokemon-app/pokemon-app-5.webp',
+
                     ],
-                    description: 'Lo stai già vedendo, ma è pur sempre un mio progetto no?',
-                    imgResize: 'myportfolio-img-resize'
-                },
-                {
-                  id: 4,
-                  name: 'myportfolio',
-                  imgCover: '../../assets/projects/myportfolio/myportfolio-home.png',
-                  projectImg: [
-                      '../../assets/projects/myportfolio/myportfolio-home.png'
+                    links: [{
+                      icon: '../../../../assets/icons/folder.webp',
+                      name: 'Repository',
+                      link: 'https://github.com/francescobert97/pokemon-react-app'
+                    },
+                    {
+                      icon: '../../../../assets/icons/live.webp',
+                      name: 'live version',
+                      link: 'https://francescobert97.github.io/pokemon-react-app/'
+                    },
                   ],
-                  description: 'Lo stai già vedendo, ma è pur sempre un mio progetto no?',
-                  imgResize: 'myportfolio-img-resize'
-              },
-              {
-                id: 44,
-                name: 'myportfolio',
-                imgCover: '../../assets/projects/myportfolio/myportfolio-home.png',
-                projectImg: [
-                    '../../assets/projects/myportfolio/myportfolio-home.png'
-                ],
-                description: 'Lo stai già vedendo, ma è pur sempre un mio progetto no?',
-                imgResize: 'myportfolio-img-resize'
-            },
-            {
-              id: 5,
-              name: 'myportfolio',
-              imgCover: '../../assets/projects/myportfolio/myportfolio-home.png',
-              projectImg: [
-                  '../../assets/projects/myportfolio/myportfolio-home.png'
-              ],
-              description: 'Lo stai già vedendo, ma è pur sempre un mio progetto no?',
-              imgResize: 'myportfolio-img-resize'
-          },
-          {
-            id: 6,
-            name: 'myportfolio',
-            imgCover: '../../assets/projects/myportfolio/myportfolio-home.png',
-            projectImg: [
-                '../../assets/projects/myportfolio/myportfolio-home.png'
-            ],
-            description: 'Lo stai già vedendo, ma è pur sempre un mio progetto no?',
-            imgResize: 'myportfolio-img-resize'
-        },
-        {
-          id: 62,
-          name: 'myportfolio',
-          imgCover: '../../assets/projects/myportfolio/myportfolio-home.png',
-          projectImg: [
-              '../../assets/projects/myportfolio/myportfolio-home.png'
-          ],
-          description: 'Lo stai già vedendo, ma è pur sempre un mio progetto no?',
-          imgResize: 'myportfolio-img-resize'
-      },
-      {
-        id: 61,
-        name: 'myportfolio',
-        imgCover: '../../assets/projects/myportfolio/myportfolio-home.png',
-        projectImg: [
-            '../../assets/projects/myportfolio/myportfolio-home.png'
-        ],
-        description: 'Lo stai già vedendo, ma è pur sempre un mio progetto no?',
-        imgResize: 'myportfolio-img-resize'
-    }
+                    description: 'Pokémon App is the ultimate app for Pokémon fans, offering an all-in-one solution to explore, capture, and manage your favorite Pokémon. With access to a complete Pokédex featuring all species, you can discover every detail about each Pokémon—types, abilities, stats, moves, and more. But that’s not all! It allows you to catch any Pokémon and organize them into your personal team or send them to your Pokémon Box for future use. Seamlessly switch between your active team and stored Pokémon, and dive deep into their individual stats and characteristics at the click of a button.',
+                }
+
       ]
         }
     }

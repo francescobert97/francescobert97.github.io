@@ -19,7 +19,7 @@ export interface IProject {
     imgCover: string,
     projectImg: string[],
     description: string,
-    imgResize: string
+    links:any[]
 }
 
 export interface IHome {

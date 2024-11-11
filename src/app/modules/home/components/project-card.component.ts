@@ -1,109 +1,81 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit,  ElementRef, ViewChild } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { IProject } from 'src/app/shared/models/home.model';
 
 @Component({
   selector: 'app-project-card',
   template: `
     <div
-      appScroll
-      (progress)="hearProgressBarScroll($event)"
-      class="project-card-section d-flex flex-column align-items-center"
+      class="project-card-section d-flex flex-column  vh-100 text-light "
     >
-      <div [class]="imgStyle" class="card-title d-flex justify-content-center">
-        <img src="{{ project.imgCover }}" alt="immagine copertina" />
-        <h2 class="text-shadow-green">{{ project.name | uppercase }}</h2>
-      </div>
-      <div class="my-5 description">
-        <p class="description-project personal-font-style text-center my-5">
-          {{ project.description }}
-        </p>
+
+      <div class="image-fixed-height position-relative d-flex justify-content-center">
+        <img class="w-100" src="{{ project.imgCover }}" alt="immagine copertina" />
+        <div class="position-absolute d-flex flex-column align-items-center ">
+          <app-links-bar [socialLink]="project.links"></app-links-bar>
+          <h2 class="box-shadow-green mt-5 bg-dark p-xxl-4 p-2 rounded">{{ project.name | uppercase }}</h2>
+        </div>
       </div>
 
-      <div
-        class="box-img-slide"
-        *ngIf="project.projectImg.length > 0; else noImage"
-      >
-        <div class="my-5 project-img-slide box-shadow-green">
+
+        <p class="d-flex align-items-center justify-content-center text-center p-2 flex-grow-1  personal-font-style ">
+          {{ project.description }}
+        </p>
+
+        <div
+          class="  position-relative box-shadow-green d-flex flex-column align-items-center image-fixed-height"
+          *ngIf="project.projectImg.length > 0; else noImage"
+        >
           <div
             class="current-image-active box-shadow-green  d-flex justify-content center"
-            *ngIf="project.projectImg.length > 0"
+
           >
-            <ng-container
-              *ngFor="let project of project.projectImg; let idx = index"
-            >
-              <div
+              <span
+               *ngFor="let imgPath of project.projectImg; let idx = index"
                 class="mx-1"
-                [class]="idx === counter ? 'activated' : 'deactivated'"
-              ></div>
-            </ng-container>
+                [ngClass]="{'activated': idx === (count| async ), 'deactivated': idx !== (count| async )}"
+              ></span>
           </div>
           <img
-            (click)="imgClick($event)"
-            src="{{ project.projectImg[counter] }}"
-            alt="immagine del progetto"
+                (click)="deepImgClick($event)"
+                src="{{ project.projectImg[(count | async) || 0] }}"
+                alt="immagine del progetto"
+                class=""
+                #imgBox
           />
-        </div>
       </div>
 
       <ng-template #noImage>
         <p>non sono ancora presenti immagini per questo progetto</p>
       </ng-template>
-    </div>
   `,
   styles: [
     `
+
+.image-fixed-height {
+  width: 100%;
+    height: 400px;
+  img {
+
+    width: 50%;
+    height: 100%;
+  }
+}
       .project-card-section {
-        color: white;
-        width: 100%;
-        height: 85vh;
         background: rgba(0, 0, 0, 0.477);
         box-shadow: 0px 0px 22px -2px #37dbd6;
-        border-radius: 10px;
-        overflow: scroll;
-        .card-title {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          top: -2.5%;
-          img {
-            border-radius: 10px;
-            width: 100%;
-            height: 100%;
-          }
-
-          h2 {
-            top: 20%;
-            position: absolute;
-            font-size: 5em;
-          }
+        div:first-of-type img {
+          object-fit: cover;
         }
-
-        .box-img-slide {
-          width: 80%;
-          height: 100%;
-
-          .project-img-slide {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-
-            img {
-              object-fit: cover center;
-              width: 100%;
-              height: 100%;
-              border-radius: 10px;
-            }
-
             .current-image-active {
               position: absolute;
               top: 2%;
-              left: 46%;
+              left:48%;
               background: black;
               border-radius: 10px;
               padding: 1.1rem 0.8rem;
             }
-          }
+
 
           .activated {
             width: 10px;
@@ -119,41 +91,60 @@ import { IProject } from 'src/app/shared/models/home.model';
             background: grey;
             box-shadow: 0px 0px 2px 1.5px #37dbd6;
           }
-        }
       }
 
-      .f-stream-img-resize {
-        img {
-          margin-top: 1.1rem;
-        }
-      }
 
-      .myportfolio-img-resize {
-        zoom: 10%;
-      }
+
       @media screen and (max-width: 1200px) {
       }
 
       @media screen and (max-width: 856px) {
+        .image-fixed-height {
+          img {
+            height: 350px;
+            width: 100%;
+          }
+        }
+        .flex-grow-lg-1 {
+          flex-grow: 1!important;
+        }
         .project-card-section {
-          margin-left: 0.25rem;
-          width: 100%;
-          .card-title {
-            top: -3.5 img {
-
+              .current-image-active {
+                left: 44%;
+                padding: 0.6rem 0.4rem;
+              }
+            .activated {
+              width: 6px;
+              height: 6px;
             }
 
+            .deactivated {
+              width: 6px;
+              height: 6px;
+            }
+          }
+
+
+
+      @media screen and (max-width: 576px) {
+
+
+        .flex-grow-sm-0 {
+          flex-grow: 0!important;
+        }
+        .flex-grow-sm-1 {
+          flex-grow: 1!important;
+        }
+        .project-card-section {
+          border-radius: 0;
+          P {
+            font-size: 0.7em;
+          }
+          div:first-of-type {
             h2 {
-              font-size: 2em;
+              font-size: 1.5em;
             }
           }
-
-          .description-project {
-            font-size: 0.8em;
-          }
-
-          .box-img-slide {
-            .project-img-slide {
               .current-image-active {
                 left: 44%;
                 padding: 0.6rem 0.4rem;
@@ -168,67 +159,13 @@ import { IProject } from 'src/app/shared/models/home.model';
               width: 6px;
               height: 6px;
             }
-          }
-        }
-      }
 
-      @media screen and (max-width: 600px) {
-        .project-card-section {
-          margin-left: 0.35rem;
-          width: 100%;
-          .card-title {
-            top: -3.5 img {
-
-            }
-
-            h2 {
-              font-size: 2em;
-            }
-          }
-
-          .description-project {
-            font-size: 0.8em;
-          }
-
-          .box-img-slide {
-            .project-img-slide {
-              .current-image-active {
-                left: 44%;
-                padding: 0.6rem 0.4rem;
-              }
-            }
-            .activated {
-              width: 6px;
-              height: 6px;
-            }
-
-            .deactivated {
-              width: 6px;
-              height: 6px;
-            }
-          }
-        }
       }
 
       @media screen and (max-width: 456px) {
         .project-card-section {
-          width: 100%;
-          .card-title {
-            top: -3.5 img {
 
-            }
 
-            h2 {
-              font-size: 2em;
-            }
-          }
-
-          .description-project {
-            font-size: 0.8em;
-          }
-
-          .box-img-slide {
-            .project-img-slide {
               .current-image-active {
                 left: 42%;
                 padding: 0.5rem 0.3rem;
@@ -243,7 +180,6 @@ import { IProject } from 'src/app/shared/models/home.model';
               width: 5px;
               height: 5px;
             }
-          }
         }
       }
     `,
@@ -251,43 +187,30 @@ import { IProject } from 'src/app/shared/models/home.model';
 })
 export class ProjectCardComponent implements OnInit {
   @Input() project!: IProject;
-  @Input() imgStyle: string = '';
-  @Output() progress = new EventEmitter<string>();
-  public counter: number = 0;
+  count = new BehaviorSubject<number>(0);
+  @ViewChild('imgBox') seeWid!:ElementRef;
+
+
 
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.project.projectImg.length);
-  }
-  public imgClick(event: any) {
-    const total = this.project.projectImg.length - 1;
-    if (document.documentElement.clientWidth > 456) {
-      event.layerX < 330 ? this.dec(total) : this.inc(total);
-    } else {
-      event.layerX < 150 ? this.dec(total) : this.inc(total);
-      console.log(event.layerX);
-    }
-  }
-  public hearProgressBarScroll(event: string) {
-    this.emitScrollPercentage(event);
-  }
-  private inc(total: number) {
-    this.counter < total ? this.counter++ : (this.counter = 0);
+    console.log(this.project)
+    this.test()
   }
 
-  private dec(total: number) {
-    this.counter <= 0 ? (this.counter = total) : this.counter--;
+  test() {
+  return this.project.projectImg.some((data,index)=> this.count.getValue() === index? true : false);
+
+
   }
-  private emitScrollPercentage(percentage: string) {
-    this.progress.emit(percentage);
+  public deepImgClick(event: any) {
+   const lastValue = this.count.getValue();
+    const total = this.project.projectImg.length -1;
+    const imgBoxWidth = this.seeWid.nativeElement.offsetWidth;
+
+    event.layerX > imgBoxWidth / 2 ? this.count.next(lastValue === total? 0 : lastValue +1) : this.count.next( lastValue === 0? total : lastValue -1);
   }
 }
 
-/*setInterval(() => {
-      if(counter > this.project.projectImg.length) {
-        counter = 0;
-      }
-      counter++
-      console.log(counter);
-    }, 700);*/
+

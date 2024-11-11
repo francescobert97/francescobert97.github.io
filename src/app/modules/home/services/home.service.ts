@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { IProject } from 'src/app/shared/models/home.model';
 
 
@@ -7,17 +7,18 @@ import { IProject } from 'src/app/shared/models/home.model';
   providedIn: 'root',
 })
 export class HomeService {
-  public project!: IProject;
-  private currentProject$ =  new Subject<any>();
+  private currentProject$ =  new BehaviorSubject<IProject>(JSON.parse(localStorage.getItem('projectData') as string));
   public projectGuard$ = this.currentProject$.asObservable()
   constructor() {}
-
+  ngOnInit(): void {
+  }
   public saveProject(project: IProject) {
-    this.project = project;
+    localStorage.setItem('projectData', JSON.stringify(project));
+    this.currentProject$.next(project);
   }
 
   public getProject() {
-    return this.project;
+    return this.currentProject$.getValue();
   }
 
 }

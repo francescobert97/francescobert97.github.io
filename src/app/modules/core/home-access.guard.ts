@@ -7,17 +7,13 @@ import { AccessHomeService } from 'src/app/shared/services/access-home.service';
   providedIn: 'root'
 })
 export class HomeAccessGuard  {
+  data:boolean = false;
+
   constructor(private accessHome: AccessHomeService, private router:Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(this.accessHome.getAccessToHome()){
-        return true
-      }else {
-        this.router.navigateByUrl('');
-        return false;
-      }
-    
+      return this.accessHome.getLastValue() === true? true : this.router.navigateByUrl('');
   }
-  
+
 }

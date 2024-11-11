@@ -11,7 +11,7 @@ import { IPresentation } from 'src/app/shared/models/home.model';
     <div  class="presentation overflow-hidden position-relative mt-sm-2 mt-md-1 mt-lg-4  box-shadow-green w-100">
       <video class="" src="{{presentationContent.video}}" autoplay muted loop playsinline></video>
 
-      <div class="personal-content position-absolute gap-4 d-flex justify-content-between  box-shadow-green rounded col-11 ms-4 me-1 p-3 ">
+      <div class=" position-absolute gap-4 d-flex justify-content-between  box-shadow-green rounded col-11 ms-4 me-1 p-3 ">
         <img class=" border box-shadow-green w-100 h-100 rounded" src="{{presentationContent.profilePicture}}" alt="profile picture">
         <p class="  flex-grow-1">{{presentationContent.biography}}</p>
       </div>
@@ -28,16 +28,16 @@ import { IPresentation } from 'src/app/shared/models/home.model';
   styles: [
     `
 
-    .links-bar {
-      width: 40%;
-      background: rgb(0,0,0);
-      bottom: 0;
-      right: 32%;
-      border-radius: 10px 10px 0 0;
-      img {
-        max-width: 40px;
-        max-height: 40px;
-      }
+.links-bar {
+            width: 40%;
+            background: rgb(0,0,0);
+            bottom: 0;
+            right: 32%;
+            border-radius: 10px 10px 0 0;
+            img {
+              max-width: 40px;
+              max-height: 40px;
+            }
     }
     .monitor {
       background: black;
@@ -50,7 +50,6 @@ import { IPresentation } from 'src/app/shared/models/home.model';
 
     .presentation {
       font-size: 0.8em;
-      animation: slideIn 0.7s forwards;
       border: 10px solid black;
 
       border-radius: var(--border);
@@ -62,7 +61,7 @@ import { IPresentation } from 'src/app/shared/models/home.model';
           object-fit: cover;
         }
 
-        .personal-content {
+         div:first-of-type {
           background: rgb(0,0,0, 0.850);
           max-height: 18rem;
           top: 5%;
@@ -72,13 +71,9 @@ import { IPresentation } from 'src/app/shared/models/home.model';
             min-width: 80px;
             min-height: 80px;
           }
-          .single-link-card {
-            margin: 1.5rem 0;
-            text-decoration: none;
+        }
 
-      }
 
-      }
 
     }
     @keyframes slideIn {
@@ -90,12 +85,12 @@ import { IPresentation } from 'src/app/shared/models/home.model';
       }
     }
 
-    @media screen and (max-width: 1200px) {
+    @media screen and (max-width: 856px) {
       .presentation {
-       // max-height: 300px;
+        max-height: 280px;
 
-          .personal-content {
-            max-height: 10rem;
+        div:first-of-type {
+          max-height: 10rem;
             font-size: 0.6em;
           }
       }
@@ -118,13 +113,19 @@ import { IPresentation } from 'src/app/shared/models/home.model';
           video {
             min-height: 310px;
           }
+          .presentation:last-child {
+            img {
+              max-width: 20px;
+              max-height: 20px;
+            }
+          }
       }
     }
 
     @media screen and (max-width: 456px) {
       .presentation {
-          .personal-content {
-            font-size: 0.5em;
+        div:first-of-type {
+          font-size: 0.5em;
           }
       }
     }
