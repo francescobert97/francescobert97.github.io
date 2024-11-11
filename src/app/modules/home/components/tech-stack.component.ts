@@ -65,8 +65,8 @@ import { ITecnology } from 'src/app/shared/models/home.model';
             position: absolute;
             transform-origin: 10px;
             transition: 3s;
-              width: 4.5rem;
-              height: 4.5rem;
+              max-width: 4.5rem;
+              max-height: 4.5rem;
         }
 
         .tecnologie-info {
@@ -83,13 +83,27 @@ import { ITecnology } from 'src/app/shared/models/home.model';
 
       @media screen and (max-width: 1200px) {
         .container-stack {
-           zoom:85%;
+
+          .single-tecnologie-card {
+            max-width: 3.5rem;
+            max-height: 3.5rem;
+           }
+
         }
       }
       @media screen and (max-width: 576px) {
         .container-stack {
-           zoom:70%;
-        }      }
+          .tecnologie-title {
+          font-size: 1em;
+
+        }
+          .single-tecnologie-card {
+            max-width: 2.5rem;
+            max-height: 2.5rem;
+           }
+
+        }
+      }
 
       @media screen and (max-width: 456px) {
         .container-stack {
