@@ -114,9 +114,6 @@ export class TechStackComponent implements OnInit, OnDestroy {
   showItem!:any[];
 
   endInterval!: any;
-
-  //public readonly showInfo: { [key: number]: boolean } = {};
-
   constructor() {}
 
   ngOnInit(): void {
