@@ -113,7 +113,7 @@ export class TechStackComponent implements OnInit, OnDestroy {
   @Input() public tecnologiesContent: ITecnology[] = [];
   showItem!:any[];
 
-  endInterval!: any;
+
   constructor() {}
 
   ngOnInit(): void {
