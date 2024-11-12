@@ -113,11 +113,9 @@ export class AnimationComponent implements OnInit {
       timer(150).pipe(
         tap(() => {
           localStorage.setItem('homeAccess', JSON.stringify({access: true}))
-          console.log(localStorage.homeAccess)
-          console.log(this.animation.closeAnimation)
 
           this.animation.closeAnimation?
-          this.router.navigateByUrl('/home') : null;
+          this.router.navigateByUrl('/home') : this.router.navigateByUrl('/error');
         })
       )
     ))
