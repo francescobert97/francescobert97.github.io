@@ -18,4 +18,3 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 
-// "homepage": "https://francescobert97.github.io",

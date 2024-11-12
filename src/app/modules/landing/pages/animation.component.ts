@@ -99,6 +99,7 @@ export class AnimationComponent implements OnInit {
 
 
   public endAnimation(): void {
+    console.log('qui ci siamo')
     const time= 3000;
     const videoElement = this.videoRef.nativeElement;
     videoElement.loop = true;
@@ -111,6 +112,9 @@ export class AnimationComponent implements OnInit {
       timer(150).pipe(
         tap(() => {
           localStorage.setItem('homeAccess', JSON.stringify({access: true}))
+          console.log(localStorage.homeAccess)
+          console.log(this.animation.closeAnimation)
+
           this.animation.closeAnimation?
           this.router.navigateByUrl('/home') : null
         })
