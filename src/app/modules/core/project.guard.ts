@@ -18,7 +18,6 @@ export class ProjectGuard   {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       this.homeService.projectGuard$.subscribe(data =>this.data = data)
-          console.log(this.data)
       return this.data.id > 0? true : this.router.navigateByUrl('/error');
 
     }

@@ -17,6 +17,20 @@ export class HomeService {
     this.currentProject$.next(project);
   }
 
+  public removeProject() {
+    const emptyProject:IProject = {
+      id:0,
+      description:'',
+      imgCover: '',
+      links: [],
+      projectImg:[],
+      name: ''
+    }
+
+    localStorage.removeItem('projectData');
+    this.currentProject$.next(emptyProject);
+  }
+
   public getProject() {
     return this.currentProject$.getValue();
   }

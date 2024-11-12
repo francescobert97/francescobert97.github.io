@@ -89,9 +89,9 @@ export class ProjectsCardComponent implements OnInit {
 
     this.router.navigateByUrl(`/home/project/:${id}`);
   }
+
   private sendDataProject(project: IProject) {
     this.homeService.saveProject(project);
-
   }
 
 }

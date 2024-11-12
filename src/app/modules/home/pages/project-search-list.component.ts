@@ -31,16 +31,6 @@ import { HomeService } from '../services/home.service';
     app-custom-button {
       position:absolute;
     }
-
-      @media screen and (max-width: 1200px) {
-      }
-
-      @media screen and (max-width: 856px) {
-      }
-
-      @media screen and (max-width: 576px) {
-      }
-
       @media screen and (max-width: 456px) {
         button {
           font-size: 0.9em;
@@ -51,33 +41,24 @@ import { HomeService } from '../services/home.service';
 })
 export class ProjectSearchListComponent implements OnInit, OnDestroy {
   project!: IProject;
-  progress: string = '';
-  constructor(private router: Router, private accessHome: AccessHomeService, private homeService:HomeService) {}
+  constructor(private router: Router, private homeService:HomeService) {}
 
   ngOnInit(): void {
     this.updateProjectOnLocalStorage();
   }
 
   public returnToHome() {
-   // this.getAccessToHome();
-
     this.router.navigateByUrl('home');
   }
 
 
   private updateProjectOnLocalStorage() {
     this.homeService.projectGuard$.subscribe(data => this.project = data)
-    console.log(this.project);
   }
 
   ngOnDestroy() {
-    if (localStorage.projectData) {
-      //this.getAccessToHome();
-      localStorage.removeItem('projectData');
-    }
+    if (localStorage.projectData) this.homeService.removeProject()
   }
-  private getAccessToHome() {
-    this.accessHome.getLastValue();
-  }
+
 
 }
