@@ -95,7 +95,10 @@ export class AnimationComponent implements OnInit {
     private accessHome: AccessHomeService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.router.navigateByUrl('/home') //: null
+
+  }
 
 
   public endAnimation(): void {
