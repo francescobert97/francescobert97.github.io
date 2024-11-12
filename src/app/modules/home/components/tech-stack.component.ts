@@ -90,7 +90,6 @@ import { ITecnology } from 'src/app/shared/models/home.model';
           .single-tecnologie-card {
 
             transform-origin: 140px;
-            //-webkit-transform-origin: 120px;
 
             max-width: 2.5rem;
             max-height: 2.5rem;
@@ -104,7 +103,11 @@ import { ITecnology } from 'src/app/shared/models/home.model';
               .tecnologie-info {
                 width: 100%;
                 font-size: 0.8em;
+              }
 
+              .single-tecnologie-card {
+                transform-origin: 120px;
+                left:-15%;
               }
         }
       }
