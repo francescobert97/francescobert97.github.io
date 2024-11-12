@@ -6,8 +6,6 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AnimationComponent } from './modules/landing/pages/animation.component';
-import { UikitmoduleModule } from './shared/uikitmodule/uikitmodule.module';
-import { ScrollDirective } from './modules/core/directive/scroll.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +15,6 @@ import { ScrollDirective } from './modules/core/directive/scroll.directive';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UikitmoduleModule,
     FormsModule
   ],
   providers: [

@@ -3,7 +3,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { IProject } from 'src/app/shared/models/home.model';
 
 @Component({
-  selector: 'app-project-card',
+  selector: 'app-projects-box-container',
   template: `
     <div
       class="project-card-section d-flex flex-column  vh-100 text-light "
@@ -12,7 +12,7 @@ import { IProject } from 'src/app/shared/models/home.model';
       <div class="image-fixed-height position-relative d-flex justify-content-center">
         <img class="w-100" src="{{ project.imgCover }}" alt="immagine copertina" />
         <div class="position-absolute d-flex flex-column align-items-center ">
-          <app-links-bar [socialLink]="project.links"></app-links-bar>
+          <app-links-bar [socialLink]="project.links" [classes]="'w-100 links-bar d-flex gap-3 justify-content-center align-items-center box-shadow-green'"></app-links-bar>
           <h2 class="box-shadow-green mt-5 bg-dark p-xxl-4 p-2 rounded">{{ project.name | uppercase }}</h2>
         </div>
       </div>
@@ -46,7 +46,7 @@ import { IProject } from 'src/app/shared/models/home.model';
       </div>
 
       <ng-template #noImage>
-        <p>non sono ancora presenti immagini per questo progetto</p>
+        <p>there are no images for this project yet.</p>
       </ng-template>
   `,
   styles: [
@@ -185,17 +185,13 @@ import { IProject } from 'src/app/shared/models/home.model';
     `,
   ],
 })
-export class ProjectCardComponent implements OnInit {
+export class ProjectsBoxContainerComponent implements OnInit {
   @Input() project!: IProject;
   count = new BehaviorSubject<number>(0);
   @ViewChild('imgBox') seeWid!:ElementRef;
-
-
-
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.project)
     this.test()
   }
 

@@ -7,7 +7,7 @@ import { ProjectSearchListComponent } from './pages/project-search-list.componen
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [HomeAccessGuard]},
-  { path: 'result/:id', component: ProjectSearchListComponent, canActivate: [ProjectGuard] }
+  { path: 'project/:id', component: ProjectSearchListComponent, canActivate: [ProjectGuard] }
 ];
 
 @NgModule({

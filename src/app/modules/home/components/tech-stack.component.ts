@@ -61,9 +61,9 @@ import { ITecnology } from 'src/app/shared/models/home.model';
               box-shadow: 0px 0px 32px -4px #37dbd6;
               z-index: 10000;
               font-size: 0.8em;
-              width:50%;
-              top:0;
-              left:30%;
+              width:63%;
+              top:-10%;
+              left:20%;
               h2 {
                 font-size:1.7em;
               }
@@ -88,9 +88,7 @@ import { ITecnology } from 'src/app/shared/models/home.model';
 
         }
           .single-tecnologie-card {
-
             transform-origin: 140px;
-
             max-width: 2.5rem;
             max-height: 2.5rem;
            }
@@ -101,8 +99,8 @@ import { ITecnology } from 'src/app/shared/models/home.model';
       @media screen and (max-width: 456px) {
         .container-stack {
               .tecnologie-info {
-                width: 100%;
-                font-size: 0.8em;
+                width: 60%;
+                font-size: 0.5em;
               }
 
               .single-tecnologie-card {
@@ -111,37 +109,23 @@ import { ITecnology } from 'src/app/shared/models/home.model';
               }
         }
       }
-      @supports (-webkit-transform-origin: 0 0) {
-  .single-tecnologie-card {
-    transform-origin: 120px;
-  }
-}
+
     `,
   ],
 })
-export class TechStackComponent implements OnInit, OnDestroy {
+export class TechStackComponent implements OnInit {
   @Input() public tecnologiesContent: ITecnology[] = [];
   showItem!:any[];
-
-
   constructor() {}
 
   ngOnInit(): void {
     this.showItem = new Array(this.tecnologiesContent.length).fill(false)
   }
 
-
-
   public showInformation(idx: number) {
+    console.log('trigger')
     if(idx < 0) return;
       this.showItem[idx] = !this.showItem[idx];
   }
-
-
-
-  ngOnDestroy() {
-  //  this.DestroyInterval();
-  }
-
 
 }

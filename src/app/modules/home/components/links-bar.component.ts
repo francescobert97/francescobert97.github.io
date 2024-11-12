@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-links-bar',
   template: `
-      <div class="w-100 links-bar d-flex gap-3 justify-content-center align-items-center box-shadow-green ">
+      <div [class]="classes" >
           <a href="{{link.link}}" class="single-link-card mt-2" *ngFor="let link of socialLink">
               <img src="{{link.icon}}" class="w-100 h-100" alt="social icon">
             </a>
@@ -23,6 +23,18 @@ import { Router } from '@angular/router';
                 }
         }
 
+        .links-bar-home {
+            width: 40%;
+            background: rgb(0,0,0);
+            bottom: 0;
+            right: 32%;
+            border-radius: 10px 10px 0 0;
+            img {
+              max-width: 40px;
+              max-height: 40px;
+            }
+        }
+
         @media (max-width: 1200px) {
           .links-bar {
             padding: 0.7rem 2rem;
@@ -31,11 +43,18 @@ import { Router } from '@angular/router';
                   max-height: 20px;
                 }
         }
+        .links-bar-home {
+          img {
+            max-width: 20px;
+            max-height: 20px;
+          }
         }
+      }
     `
   ]
 })
 export class LinksBarComponent implements OnInit {
+@Input() classes = '';
 @Input() socialLink:any = [
   {
     icon: '../../../../assets/icons/github-icon.png',

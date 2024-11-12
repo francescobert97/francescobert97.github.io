@@ -5,40 +5,22 @@ import { IPresentation } from 'src/app/shared/models/home.model';
 @Component({
   selector: 'app-presentation',
   template: `
-
-<div class="monitor box-shadow-green position-absolute"></div>
+    <div class="monitor box-shadow-green position-absolute"></div>
 
     <div  class="presentation overflow-hidden position-relative mt-sm-2 mt-md-1 mt-lg-4  box-shadow-green w-100">
       <video class="" src="{{presentationContent.video}}" autoplay muted loop playsinline></video>
-
       <div class=" position-absolute gap-4 d-flex justify-content-between  box-shadow-green rounded col-11 ms-4 me-1 p-3 ">
         <img class=" border box-shadow-green w-100 h-100 rounded" src="{{presentationContent.profilePicture}}" alt="profile picture">
         <p class="  flex-grow-1">{{presentationContent.biography}}</p>
       </div>
 
-      <div class="position-absolute links-bar d-flex gap-3 justify-content-center align-items-center p-1">
-          <a href="{{link.link}}" class="single-link-card mt-2" *ngFor="let link of socialLink">
-              <img src="{{link.icon}}" class="" alt="social icon">
-            </a>
-      </div>
+      <app-links-bar [classes]="' position-absolute  links-bar-home d-flex gap-3 justify-content-center align-items-center p-1'"></app-links-bar>
     </div>
 
 
   `,
   styles: [
     `
-
-.links-bar {
-            width: 40%;
-            background: rgb(0,0,0);
-            bottom: 0;
-            right: 32%;
-            border-radius: 10px 10px 0 0;
-            img {
-              max-width: 40px;
-              max-height: 40px;
-            }
-    }
     .monitor {
       background: black;
       width: 10%;
@@ -97,14 +79,6 @@ import { IPresentation } from 'src/app/shared/models/home.model';
     }
 
     @media screen and (max-width: 576px) {
-
-      .links-bar {
-        img {
-        max-width: 20px;
-        max-height: 20px;
-      }
-
-      }
       .monitor { display:none;}
       .presentation {
           border: 0;

@@ -8,29 +8,16 @@ import { Router } from '@angular/router';
   `,
   styles: [
     `
-
      .close-btn {
         background: rgba(0, 0, 0, 0.777);
         border-radius: 10px;
 
         z-index: 9999;
       }
-    @media screen and (max-width: 1200px) {
-
-    }
-
-    @media screen and (max-width: 856px) {
-
-    }
-
     @media screen and (max-width: 600px) {
     .close-btn {
      font-size: 0.6em;
     }
-
-    }
-
-    @media screen and (max-width: 456px) {
 
     }
     `

@@ -19,9 +19,9 @@ import { HomeService } from '../services/home.service';
 
 
       <div class="col-sm-10 mx-auto col-12 d-flex justify-content-center">
-        <app-project-card
+        <app-projects-box-container
           [project]="project"
-        ></app-project-card>
+        ></app-projects-box-container>
       </div>
     </div>
   `,

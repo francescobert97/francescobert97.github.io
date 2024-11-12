@@ -92,7 +92,6 @@ export class AnimationComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private accessHome: AccessHomeService
   ) {}
 
   ngOnInit(): void {
@@ -105,7 +104,7 @@ export class AnimationComponent implements OnInit {
     const videoElement = this.videoRef.nativeElement;
     videoElement.loop = true;
     videoElement.play();
-    this.text = 'LOADING';
+    this.text = 'LOAD';
 
   const animationActions =  timer(time).pipe(
       tap(() => this.animation.closeAnimation = true),

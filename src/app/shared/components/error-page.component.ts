@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-error-page',
   template: `
-  <div class="error-box text-light d-flex flex-column justify-content-center align-items-center">
+  <div class="background error-box text-light d-flex flex-column justify-content-center align-items-center">
     <div class="box-shadow-green d-flex flex-column justify-content-around align-items-center">
-      <h1 class="text-center">ACCESSO NEGATO</h1>
-      <p class="text-center">Ti è stato vietato l'accesso perchè hai provato ad accedere ad un'area a cui non hai diritto di accedere oppure ad un percorso inesistente</p>
-      <button (click)="router.navigateByUrl('/home')" class="box-shadow-green p-1 text-light">Torna indietro</button>
+      <h1 class="text-center">ACCESS DENIED</h1>
+      <p class="text-center">You have been denied access because you tried to access an area you are not authorized to enter or a non-existent path.</p>
+      <button (click)="router.navigateByUrl('/home')" class="box-shadow-green p-1 text-light">Go Back</button>
     </div>
   </div>
   `,
@@ -17,7 +17,6 @@ import { Router } from '@angular/router';
     .error-box {
       width: 100%;
       height: 100vh;
-      background: transparent;
       div:first-child {
         border-radius: 10px;
         background: black;

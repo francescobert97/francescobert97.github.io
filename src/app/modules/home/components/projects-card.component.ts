@@ -24,8 +24,8 @@ import { Router } from '@angular/router';
   styles: [
     `
   .project-card {
-          top:25%;
-          height: 70%;
+          top:0;
+          height: 95%;
           background: rgba(0, 0, 0);
           border-radius: 20px;
           transform: rotate3d(1, -10, 1, 30deg);
@@ -48,7 +48,6 @@ import { Router } from '@angular/router';
           span {
               border-radius: 100%;
               background: aqua;
-
             }
         }
         @media screen and (max-width: 856px) {
@@ -60,16 +59,6 @@ import { Router } from '@angular/router';
             transform:  translateY(-50px);
             z-index: 1000;
           }
-            h4 {
-              font-size: 1.4em;
-            }
-
-          }
-        }
-
-      @media screen and (max-width: 600px) {
-          .project-card {
-
             h4 {
               font-size: 1.4em;
             }
@@ -98,7 +87,7 @@ export class ProjectsCardComponent implements OnInit {
   public showfullProject(id: number, project: IProject) {
     this.sendDataProject(project);
 
-    this.router.navigateByUrl(`/home/result/:${id}`);
+    this.router.navigateByUrl(`/home/project/:${id}`);
   }
   private sendDataProject(project: IProject) {
     this.homeService.saveProject(project);
