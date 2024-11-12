@@ -96,7 +96,10 @@ export class AnimationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.router.navigateByUrl('/home') //: null
+    setTimeout(() => {
+      this.router.navigateByUrl('/home')
+
+    }, 1000);
 
   }
 
