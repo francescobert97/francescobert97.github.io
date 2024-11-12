@@ -96,11 +96,6 @@ export class AnimationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.router.navigateByUrl('/home')
-
-    }, 1000);
-
   }
 
 
@@ -121,8 +116,8 @@ export class AnimationComponent implements OnInit {
           console.log(localStorage.homeAccess)
           console.log(this.animation.closeAnimation)
 
-          //this.animation.closeAnimation?
-          this.router.navigateByUrl('/home') //: null
+          this.animation.closeAnimation?
+          this.router.navigateByUrl('/home') : null;
         })
       )
     ))
